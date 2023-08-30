@@ -1,0 +1,59 @@
+.nav-parent {
+  background: #111111;
+  .nav {
+    width: 1440px;
+    margin-inline: auto;
+    padding-block: 4rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+
+    .logo {
+      width: 80px;
+    }
+
+    .middle {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+
+      .nav-wrapper {
+        .nav-link {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+
+    .icons {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      font-size: 1.6rem;
+      color: white;
+
+      i {
+        cursor: pointer;
+      }
+    }
+
+    .search-bar {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 400px;
+      padding: 1rem 2rem;
+      transform: scaleY(0);
+      transition: transform 0.3s ease-in-out;
+      transform-origin: top;
+
+      &.clicked {
+        transform: scaleY(1);
+      }
+    }
+  }
+}

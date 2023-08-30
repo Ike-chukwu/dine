@@ -1,0 +1,60 @@
+.family-gathering {
+  display: flex;
+  gap: 21rem;
+  position: relative;
+
+  &::before {
+    content: url(../../assets/images/patterns/pattern-curve-top-right.svg);
+    position: absolute;
+    top: 0;
+    left: -48%;
+  }
+
+  .left-family-gathering {
+    position: relative;
+    width: 540px;
+    .lines {
+      position: absolute;
+      left: -43%;
+    }
+    .main-picture {
+      width: 100%;
+      position: absolute;
+      left: 0;
+    }
+    .svg{
+        position: absolute;
+        right: -10%;
+        top: 75%;
+    }
+  }
+  .right-family-gathering {
+    padding-top: 6rem;
+    .inner-top {
+      margin-bottom: 3rem;
+      h2 {
+        font-size: 4rem;
+      }
+
+      p {
+        font-size: 2rem;
+        margin-block: 2.5rem;
+        width: 400px;
+        line-height: 1.5;
+      }
+
+      button {
+        background: black;
+      }
+    }
+    .inner-bottom {
+      padding-top: 5rem;
+      p {
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-bottom: 3rem;
+        letter-spacing: 0.4rem;
+      }
+    }
+  }
+}

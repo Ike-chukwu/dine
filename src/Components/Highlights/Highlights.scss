@@ -1,0 +1,63 @@
+.highlights-parent {
+  background: black;
+  color: white;
+  padding-block: 12rem;
+
+  .highlights {
+    display: flex;
+    gap: 10rem;
+
+    .left-content-highlight {
+      padding-bottom: 5rem;
+      h2 {
+        font-size: 4rem;
+        margin-block: 4rem;
+      }
+
+      p {
+        font-size: 2rem;
+        width: 400px;
+        line-height: 1.5;
+      }
+    }
+    .right-content-highlight {
+      width: 50%;
+      .right-container-parent {
+        border-bottom: .1rem solid white;
+        margin-bottom: 2rem;
+        .food-box {
+          padding-inline: 3rem;
+          display: flex;
+          align-items: center;
+          gap: 9rem;
+          padding-bottom: 3rem;
+          .left {
+            position: relative;
+            // z-index: 100;
+            .food-img {
+              position: relative;
+              z-index: 100;
+            }
+            .s-icon {
+              position: absolute;
+              top: 50%;
+              left: 70%;
+              z-index: 0;
+            }
+          }
+          .right {
+            h3 {
+              font-size: 2rem;
+              text-transform: capitalize;
+            }
+            p {
+              font-size: 2rem;
+              line-height: 1.5;
+              margin-top: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

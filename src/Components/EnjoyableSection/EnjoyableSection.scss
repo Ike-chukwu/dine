@@ -1,0 +1,32 @@
+.enjoyable{
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &::after{
+        position: absolute;
+        content: url(../../assets/images/patterns/pattern-curve-top-right.svg);
+        left:-16%;
+        width: 500px;
+        top: 50%;
+    }
+
+    .left-image{
+        position: absolute;
+        top: -20%;
+    }
+
+    .right-content{
+        position: relative;
+        left:43%;
+        h2{
+            font-size: 4rem;
+            margin-block: 4rem;
+        }
+
+        p{font-size: 2rem;
+            width: 400px;
+            line-height: 1.5;
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.local-food {
+  padding-top: 50rem;
+//   padding-bottom: 20rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .content-local-food {
+    position: relative;
+    padding-bottom: 5rem;
+    h2 {
+      font-size: 4rem;
+      margin-block: 4rem;
+    }
+
+    p {
+      font-size: 2rem;
+      width: 400px;
+      line-height: 1.5;
+    }
+  }
+
+  .right-food-content {
+    position: absolute;
+    right: 20%;
+    top: 30%;
+    &::after{
+        position: absolute;
+        content: url(../../assets/images/patterns/pattern-curve-top-left.svg);
+        right:-100%;
+        bottom: 12%;
+        z-index: -2;
+    }
+    .right-local-food-img{
+        position: absolute;
+        right: -15%;
+        top: 25%;
+    }
+  }
+}

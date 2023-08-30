@@ -1,0 +1,24 @@
+.hero-imgae {
+  background-image: url(../../assets//images/homepage/hero-bg-desktop@2x.jpg);
+  background-color: #111111;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 80vh;
+
+  .hero {
+    padding-top: 15rem;
+    color: white;
+
+    .hero-title {
+      font-size: 6.4rem;
+    }
+
+    p {
+      font-size: 2rem;
+      margin-block: 4rem;
+      width: 400px;
+      line-height: 1.5;
+    }
+  }
+}
