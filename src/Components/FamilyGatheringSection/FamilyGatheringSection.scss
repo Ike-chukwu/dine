@@ -21,11 +21,12 @@
       width: 100%;
       position: absolute;
       left: 0;
+      box-shadow: 0 7.5rem 10rem -5rem rgba(56, 66, 85, 0.5) ;
     }
     .svg{
         position: absolute;
         right: -10%;
-        top: 75%;
+        top: 74%;
     }
   }
   .right-family-gathering {
@@ -49,11 +50,16 @@
     }
     .inner-bottom {
       padding-top: 5rem;
-      p {
+      .category {
         font-size: 2rem;
         text-transform: uppercase;
         margin-bottom: 3rem;
         letter-spacing: 0.4rem;
+        font-weight: lighter;
+
+        &.active{
+          font-weight: 700;
+        }
       }
     }
   }
