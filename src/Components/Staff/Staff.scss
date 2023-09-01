@@ -1,0 +1,80 @@
+.team-details {
+  padding-block: 8rem;
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .team-content {
+    display: flex;
+    gap: 7rem;
+    width: 1440px;
+    margin-inline: auto;
+    margin-top: 8rem;
+
+    .people-img {
+      width: 400px;
+      height: 500px;
+      border: 0.4rem solid black;
+      border-radius: 2rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 2rem;
+      }
+    }
+
+    .personal-details {
+      flex: 0.8;
+      height: 60rem;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 0.2rem solid black;
+        padding-block: 3.5rem;
+        &.hovered {
+          font-weight: bold;
+          color: #f7e172;
+          border-bottom: 0.2rem solid #f7e172;
+        }
+        .name {
+          font-size: 3rem;
+          text-transform: capitalize;
+          width: 33%;
+        }
+        .position {
+          font-size: 1.5rem;
+          text-transform: uppercase;
+          text-align: left;
+          width: 33%;
+        }
+
+        .socials {
+          display: flex;
+          gap: 1rem;
+          width: 33%;
+          justify-content: flex-end;
+          i {
+            font-size: 1.3rem;
+            padding: 1rem;
+            color: black;
+            border: 0.1rem solid lightgray;
+
+            &.hovered {
+              background: #f7e172;
+            }
+          }
+        }
+        &:nth-child(1) {
+          border-top: 0.2rem solid black;
+        }
+      }
+    }
+  }
+}

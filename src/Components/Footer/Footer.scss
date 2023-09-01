@@ -1,0 +1,22 @@
+.footer-parent{
+    background: black;
+    .footer{
+        display: flex;
+        gap: 20rem;
+        align-items: center;
+
+        .right-footer-content{
+            display: flex;
+            gap: 20rem;
+            align-items: center;
+
+            p{
+                margin-bottom: 1.5rem;
+                text-transform: uppercase;
+                color: white;
+                font-size: 2rem;
+                font-weight: 100;
+            }
+        }
+    }
+}
