@@ -2,6 +2,8 @@ import React from "react";
 import "./FoodCategory.scss";
 import chef1 from "../../assets/images/staff/chef-1.jpg";
 import guard1 from "../../assets/images/staff/guard-1.jpg";
+import Card from "../Card/Card";
+
 
 const FoodCategory = () => {
   return (
@@ -28,10 +30,12 @@ const FoodCategory = () => {
           <div className="single-category">Beef</div>
         </div>
         <div className="food-result">
-          <div className="food-box">
+          <Card name="spaghetti" />
+
+          {/* <div className="food-box">
             <img src={chef1} alt="" />
             <h2>Food name</h2>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

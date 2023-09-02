@@ -44,21 +44,34 @@
     .search-bar {
       position: absolute;
       top: 100%;
-      right: 0;
-      width: 400px;
-      padding: 1rem 2rem;
+      right: 1%;
+      width: 300px;
       transform: scaleY(0);
       transition: transform 0.3s ease-in-out;
       transform-origin: top;
-
-      &.bg-color{
-        background: black;
-        border-color: white;
-        color: white;
+      display: flex;
+      align-items: center;
+      height: 30px;
+      
+      input{
+        width: 70%;
+        display: block;
+        height: 100%;
       }
-
       &.clicked {
         transform: scaleY(1);
+      }
+
+      .search-btn{
+        padding: unset;
+        background: #f7e172;
+        text-transform: capitalize;
+        outline: none;
+        color: black;
+        border: none;
+        width: 30%;
+        height: 100%;
+        font-weight: 700;
       }
     }
   }
