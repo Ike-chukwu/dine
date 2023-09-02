@@ -51,6 +51,12 @@
       transition: transform 0.3s ease-in-out;
       transform-origin: top;
 
+      &.bg-color{
+        background: black;
+        border-color: white;
+        color: white;
+      }
+
       &.clicked {
         transform: scaleY(1);
       }

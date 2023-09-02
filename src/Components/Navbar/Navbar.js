@@ -1,10 +1,32 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../../assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
 
 export const Navbar = () => {
   const [isSearchBarActive, setSearchbar] = useState(false);
+
+  const location = useLocation()
+  const ref = useRef()
+  let inputStyle;
+
+  useEffect(() => {
+    if(location.pathname == '/menu'){
+      console.log(ref.current.style);
+      ref.current.style.backgroundColor =  "black"
+      ref.current.style.color =  "white"
+      ref.current.style.border =  "0.2rem solid white"
+    }
+    else{
+      ref.current.style.backgroundColor =  "white"
+      ref.current.style.color =  "black"
+      ref.current.style.border =  "0.2rem solid black"
+    }
+  }, [
+    location
+  ])
+
+
   return (
     <div className="nav-parent">
       <div className="nav">
@@ -38,6 +60,7 @@ export const Navbar = () => {
 
         <input
           type="text"
+          ref = {ref}
           className={isSearchBarActive ? "search-bar clicked" : "search-bar"}
         />
       </div>
