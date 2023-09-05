@@ -1,0 +1,10 @@
+.parent-curve{
+    position: relative;
+
+    .lines{
+        position: absolute;
+        top: 25%;
+        // z-index: 150;
+        left: 40%;
+    }
+}

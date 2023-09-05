@@ -1,0 +1,152 @@
+.reservation-parent {
+  background: url(../../assets/images/homepage/ready-bg-desktop.jpg) no-repeat;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+
+  .reservation-container {
+    padding-top: 15rem;
+    display: flex;
+    position: relative;
+
+    .left-reservation {
+      .reservation-title {
+        font-size: 6.4rem;
+        text-transform: capitalize;
+        color: white;
+      }
+      .reservation-testContent {
+        font-size: 2rem;
+        margin-block: 4rem;
+        width: 380px;
+        line-height: 1.5;
+        color: white;
+      }
+    }
+    .reservation-form {
+      width: 500px;
+      background: white;
+      padding: 6rem;
+      display: flex;
+      gap: 3rem;
+      flex-direction: column;
+      position: absolute;
+      left: 45%;
+      bottom: -35%;
+      z-index: 100;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      .personal-details {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        .fullDetails {
+          font-size: 2rem;
+          padding-bottom: 1rem;
+          border: none;
+          outline: none;
+          border-bottom: 0.1rem solid #c6c6c6;
+          width: 100%;
+        }
+      }
+
+      .reservation-date {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .duration-title {
+          color: black;
+          font-size: 2rem;
+          font-weight: 100;
+          width: 30%;
+          align-self: flex-end;
+        }
+        .date-in-numbers {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 70%;
+          input {
+            width: 90px;
+            padding-bottom: 1rem;
+            border: none;
+            outline: none;
+            border-bottom: 0.1rem solid #c6c6c6;
+          }
+        }
+      }
+
+      .reservation-timee {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .duration-title {
+          color: black;
+          font-size: 2rem;
+          font-weight: 100;
+          width: 30%;
+          align-self: flex-end;
+        }
+        .date-in-numbers {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 70%;
+          .time {
+            display: flex;
+            gap: 1.5rem;
+          }
+          input {
+            width: 90px;
+            padding-bottom: 1rem;
+            border: none;
+            outline: none;
+            border-bottom: 0.1rem solid #c6c6c6;
+          }
+
+          .selection {
+            width: 90px;
+            border: none;
+            align-self: self-end;
+            outline: none;
+            border-bottom: 0.1rem solid #c6c6c6;
+          }
+        }
+      }
+
+      .no-of-people {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 0.1rem solid;
+
+        .minus {
+          font-size: 2.5rem;
+        }
+        .plus {
+          font-size: 2.5rem;
+        }
+        .amount-of-people {
+          font-size: 2rem;
+          font-weight: 600;
+          padding-bottom: 1rem;
+        }
+      }
+
+      .reservation-booking-btn {
+        width: 100%;
+        padding-block: 3rem;
+        background: black;
+        color: white;
+        text-transform: uppercase;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+          border: 0.1rem solid black;
+          background: none;
+          color: black;
+        }
+      }
+    }
+  }
+}

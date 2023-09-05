@@ -6,6 +6,7 @@ import About from "./Pages/About";
 import Menu from "./Pages/Menu";
 import SearchedResult from "./Components/SearchedResult/SearchedResult";
 import Search from "./Pages/Search";
+import Reservation from "./Pages/Reservation";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/search/:id" element={<Search/>} />
+        <Route path="/search/:id" element={<Search />} />
+        <Route path="/reservation" element={<Reservation />} />
       </Routes>
     </div>
   );
