@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ReservationHero.scss";
+import Input from "../Input/Input";
 
 const ReservationHero = () => {
   const [inputData, setInputData] = useState({
@@ -15,7 +16,7 @@ const ReservationHero = () => {
     const name = e.target.name;
     setInputData({
       ...inputData,
-      name: value,
+      [name]: value,
     });
   };
 
@@ -25,50 +26,47 @@ const ReservationHero = () => {
       type: "name",
       placeholder: "Name",
       name: "Name",
-      required:true,
+      required: true,
       errorMessage: "This field cannot be empty",
-      pattern: "/^s*$/",
+      pattern: "^.{6,}$",
     },
     {
       id: 1,
       type: "email",
       placeholder: "Email",
       name: "Email",
-      required:true,
-      errorMessage: "This field cannot be empty",
-      pattern: "/^s*$/",
+      required: true,
+      errorMessage: "This email is incorrect",
     },
   ];
 
   const dateDetails = [
     {
-      id: 0,
-      type: "number",
+      id: Math.random(),
+      type: "text",
       placeholder: "MM",
       name: "Month",
-      required:true,
+      required: true,
       errorMessage: "Please fill in a correct month",
-      pattern: "/^(1[3-9]|[2-9]d|d{3,})$/",
-      maxLength: "2",
+      pattern: "^[0-9]+$",
     },
     {
-      id: 1,
-      type: "number",
+      id: Math.random(),
+      type: "text",
       placeholder: "DD",
       name: "Day",
-      required:true,
+      required: true,
       errorMessage: "Please fill in a correct day",
-      pattern: "/^(3[2-9]|[4-9]d|d{3,})$/",
-      maxLength: "2",
+      pattern: "^[0-9]+$",
     },
     {
-      id: 2,
-      type: "number",
+      id: Math.random(),
+      type: "text",
       placeholder: "YY",
       name: "Year",
-      required:true,
+      required: true,
       errorMessage: "Please fill in a correct year",
-      maxLength: "4",
+      pattern: "^[0-9]+$",
     },
   ];
 
@@ -76,6 +74,10 @@ const ReservationHero = () => {
     { id: 0, value: "AM" },
     { id: 1, value: "PM" },
   ];
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="reservation-parent">
@@ -88,17 +90,42 @@ const ReservationHero = () => {
             to accommodate you.
           </p>
         </div>
-        <form action="" className="reservation-form">
+        <form action="" className="reservation-form" onSubmit={submitHandler}>
           <div className="personal-details">
-            <input type="text" className="fullDetails" placeholder="Name" />
-            <input type="text" className="fullDetails" placeholder="Email" />
+            {personDetails.map((item) => {
+              return (
+                <>
+                  <Input
+                    className="fullDetails"
+                    key={item.id}
+                    type={item.type}
+                    onchange={inputChange}
+                    value={inputData[item.name]}
+                    {...item}
+                  />
+                </>
+              );
+            })}
+            {/* <input type="text" className="fullDetails" placeholder="Name" />
+            <input type="text" className="fullDetails" placeholder="Email" /> */}
           </div>
           <div className="reservation-date">
             <h3 className="duration-title">Pick a date</h3>
             <div className="date-in-numbers">
+              {dateDetails.map((item) => {
+                return (
+                  <Input
+                    key={item.id}
+                    type={item.type}
+                    onchange={inputChange}
+                    value={inputData[item.name]}
+                    {...item}
+                  />
+                );
+              })}
+              {/* <input type="number" maxLength={2} />
               <input type="text" maxLength={2} />
-              <input type="text" maxLength={2} />
-              <input type="text" maxLength={4} />
+              <input type="text" maxLength={4} /> */}
             </div>
           </div>
           <div className="reservation-timee">
@@ -121,8 +148,9 @@ const ReservationHero = () => {
             <span className="plus">+</span>
           </div>
 
-
-          <button className="reservation-booking-btn">make a reservation</button>
+          <button className="reservation-booking-btn">
+            make a reservation
+          </button>
         </form>
       </section>
     </div>

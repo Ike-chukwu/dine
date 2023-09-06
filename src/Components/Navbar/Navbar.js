@@ -18,17 +18,15 @@ export const Navbar = () => {
   //function that sarches for a particular food
   const searchFoodHandler = (e) => {
     e.preventDefault();
-    if (searchedFood == "" || searchedFood == null ) {
-      console.log('yes');
+    if (searchedFood == "" || searchedFood == null) {
+      console.log("yes");
       inputRef.current.style.border = "0.2rem solid red";
-   
     } else {
       inputRef.current.style.border = "unset";
       navigate(`/search/${searchedFood}`);
-      setSearchbar(false)
-      setSearchedFood('');
+      setSearchbar(false);
+      setSearchedFood("");
     }
-
   };
 
   return (
@@ -40,6 +38,11 @@ export const Navbar = () => {
 
         <div className="middle">
           <div className="nav-wrapper">
+            <Link className="nav-link" to="/">
+              home
+            </Link>
+          </div>
+          <div className="nav-wrapper">
             <Link className="nav-link" to="/about">
               about
             </Link>
@@ -50,12 +53,12 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className="nav-wrapper">
+            <Link className="nav-link"  to="/wishlist">favourites</Link>
+          </div>
+          {/* <div className="nav-wrapper">
             <Link className="nav-link" to="/account">
               sign-in/registration
             </Link>
-          </div>
-          {/* <div className="nav-wrapper">
-            <Link className="nav-link">wishlist</Link>
           </div> */}
         </div>
 
@@ -71,7 +74,12 @@ export const Navbar = () => {
         <div
           className={isSearchBarActive ? "search-bar clicked" : "search-bar"}
         >
-          <input type="text" onChange={foodInput} ref={inputRef} value={searchedFood} />
+          <input
+            type="text"
+            onChange={foodInput}
+            ref={inputRef}
+            value={searchedFood}
+          />
           <button onClick={searchFoodHandler} className="search-btn">
             Search
           </button>

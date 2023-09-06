@@ -1,0 +1,39 @@
+.fullDetails {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  border: none;
+  outline: none;
+  border-bottom: 0.2rem solid #c6c6c6;
+  width: 100%;
+}
+
+.fullDetails:invalid[focused="true"] {
+  border-bottom: 0.2rem solid red;
+}
+
+.fullDetails {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  border: none;
+  outline: none;
+  border-bottom: 0.2rem solid #c6c6c6;
+  width: 100%;
+}
+
+.fullDetails:invalid[focused="true"] {
+  border-bottom: 0.2rem solid red;
+}
+
+
+.duration {
+  width: 80px;
+  padding-bottom: 1rem;
+  border: none;
+  outline: none;
+  border-bottom: 0.1rem solid #c6c6c6;
+}
+
+
+.duration:invalid[focused="true"] {
+  border-bottom: 0.2rem solid red;
+}
