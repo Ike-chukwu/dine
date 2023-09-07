@@ -1,0 +1,93 @@
+.view-product-container {
+  .go-back {
+    font-size: 2rem;
+    text-transform: capitalize;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    gap: 2rem;
+    .left-product-side {
+      width: 100%;
+      height: 800px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .right-food-side {
+      padding-bottom: 5rem;
+      .product-name {
+        font-size: 4rem;
+      }
+
+      .product-category {
+        margin-top: 2rem;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        .category {
+          display: block;
+          font-size: 2rem;
+          text-transform: capitalize;
+          width: 150px;
+        }
+        .category-name {
+          font-size: 2rem;
+          text-transform: capitalize;
+          font-weight: 600;
+        }
+        .category-price {
+          font-size: 2rem;
+          font-weight: 600;
+        }
+      }
+      .btns {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+        align-items: center;
+
+        .product-amount {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          .subtract,
+          .add {
+            font-size: 1.5rem;
+            padding: 2rem;
+            background: black;
+            height: 100%;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+          .amount {
+            font-size: 2rem;
+          }
+        }
+
+        .add-btn {
+          background: black;
+
+          &:hover {
+            border: 0.2rem solid black;
+            background: none;
+            color: black;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

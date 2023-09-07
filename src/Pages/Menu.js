@@ -1,15 +1,16 @@
-import React from 'react'
-import FoodCategory from '../Components/FoodCategory/FoodCategory'
-import Footer from "../../src/Components/Footer/Footer"
-
+import React from "react";
+import FoodCategory from "../Components/FoodCategory/FoodCategory";
+import Footer from "../../src/Components/Footer/Footer";
+import ReservationBanner from "../Components/ReservationBanner/ReservationBanner";
 
 const Menu = () => {
   return (
     <div>
-        <FoodCategory/>
-        <Footer/>
+      <FoodCategory />
+      <ReservationBanner />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

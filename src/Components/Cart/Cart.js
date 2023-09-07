@@ -10,7 +10,7 @@ const Cart = (props) => {
     if (html) {
       html.style.overflow = props.isCartActive ? "hidden" : "auto";
     }
-  }, [props.setting]);
+  }, [props.isCartActive]);
 
   return (
     <div className={ props.isCartActive? "cart-parent activated" :"cart-parent"}>

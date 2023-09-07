@@ -9,6 +9,7 @@ import Search from "./Pages/Search";
 import Reservation from "./Pages/Reservation";
 import { useState } from "react";
 import Cart from "./Components/Cart/Cart";
+import ViewFoodPage from "./Components/ViewFoodPage/ViewFoodPage";
 
 function App() {
   const [isCartActive, setCartActive] = useState(false);
@@ -20,7 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/menu/:id" element={<Menu />} />
+        <Route path="/menu/:id" element={<ViewFoodPage/>} />
         <Route path="/search/:id" element={<Search />} />
         <Route path="/reservation" element={<Reservation />} />
       </Routes>
