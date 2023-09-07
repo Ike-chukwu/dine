@@ -3,7 +3,7 @@ import logo from "../../assets/images/logo.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 
-export const Navbar = () => {
+export const Navbar = (props) => {
   const [isSearchBarActive, setSearchbar] = useState(false);
   const [searchedFood, setSearchedFood] = useState();
   const inputRef = useRef();
@@ -53,7 +53,9 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className="nav-wrapper">
-            <Link className="nav-link"  to="/wishlist">favourites</Link>
+            <Link className="nav-link" to="/wishlist">
+              favourites
+            </Link>
           </div>
           {/* <div className="nav-wrapper">
             <Link className="nav-link" to="/account">
@@ -67,7 +69,10 @@ export const Navbar = () => {
             className="fas fa-search"
             onClick={() => setSearchbar(!isSearchBarActive)}
           ></i>
-          <i className="fas fa-shopping-cart"></i>
+          <i
+            className="fas fa-shopping-cart"
+            onClick={() => props.setCartActive(!props.isCartActive)}
+          ></i>
           <div className="menu-bar-icon"></div>
         </div>
 
