@@ -3,14 +3,25 @@ import "./ReservationHero.scss";
 import Input from "../Input/Input";
 
 const ReservationHero = () => {
+  //state that saves all values from all input fields
   const [inputData, setInputData] = useState({
     Name: "",
     Email: "",
     Month: "",
     Day: "",
     Year: "",
+    Hour: "",
+    Minutes: "",
+    DropDown: "AM",
   });
 
+  //state that holds the number of people
+  const [noOfPeople, setNoOfPeople] = useState(1);
+
+  //monitor error in input field
+  const [error, setError] = useState(false);
+
+  //function is triggered when any input field's value is changed
   const inputChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -20,6 +31,15 @@ const ReservationHero = () => {
     });
   };
 
+  //function that triggers the dropdown option when its clicked
+  const dropDownHandler = (e) => {
+    setInputData({
+      ...inputData,
+      DropDown: e.target.value,
+    });
+  };
+
+  //stores data to be rendred in name and email input fields
   const personDetails = [
     {
       id: 0,
@@ -40,6 +60,7 @@ const ReservationHero = () => {
     },
   ];
 
+  //stores data to be rendered in the date section
   const dateDetails = [
     {
       id: Math.random(),
@@ -70,13 +91,66 @@ const ReservationHero = () => {
     },
   ];
 
-  const dropdownOptions = [
-    { id: 0, value: "AM" },
-    { id: 1, value: "PM" },
+  //stores data to be rendered in the time section
+  const timeDetails = [
+    {
+      id: Math.random(),
+      type: "text",
+      placeholder: "09",
+      name: "Hour",
+      required: true,
+      errorMessage: "Please fill in a correct time",
+      pattern: "^[0-9]+$",
+    },
+    {
+      id: Math.random(),
+      type: "text",
+      placeholder: "00",
+      name: "Minutes",
+      required: true,
+      errorMessage: "Please fill in a correct time",
+      pattern: "^[0-9]+$",
+    },
   ];
 
+  //stores data to be rendered in the dropdown section
+  const dropdownOptions = [
+    { id: Math.random(), value: "AM" },
+    { id: Math.random(), value: "PM" },
+  ];
+
+  //function that is trigerred when submit button is clicked
   const submitHandler = (e) => {
     e.preventDefault();
+    const userDate = new Date(
+      inputData.Year,
+      inputData.Month - 1,
+      inputData.Day,
+      inputData.Hour,
+      inputData.Minutes,
+      inputData.Minutes
+    );
+    const currentDate = new Date();
+
+    if (userDate <= currentDate) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+  };
+
+  //function that increases the number of people
+  const increament = () => {
+    setNoOfPeople(noOfPeople + 1);
+  };
+
+  //function that reduces the number of people
+  const decreament = () => {
+    if (noOfPeople <= 1) {
+      setNoOfPeople(1);
+    } else {
+      setNoOfPeople(noOfPeople - 1);
+    }
   };
 
   return (
@@ -97,11 +171,12 @@ const ReservationHero = () => {
                 <>
                   <Input
                     className="fullDetails"
-                    key={item.id}
+                    key={item.name}
                     type={item.type}
                     onchange={inputChange}
                     value={inputData[item.name]}
                     {...item}
+                    id={item.name}
                   />
                 </>
               );
@@ -115,7 +190,7 @@ const ReservationHero = () => {
               {dateDetails.map((item) => {
                 return (
                   <Input
-                    key={item.id}
+                    key={item.name}
                     type={item.type}
                     onchange={inputChange}
                     value={inputData[item.name]}
@@ -132,22 +207,60 @@ const ReservationHero = () => {
             <h3 className="duration-title">Pick a time</h3>
             <div className="date-in-numbers">
               <div className="time">
-                <input type="text" maxLength={2} />
-                <input type="text" maxLength={2} />
+                {timeDetails.map((item) => {
+                  return (
+                    <Input
+                      key={item.name}
+                      type={item.type}
+                      onchange={inputChange}
+                      value={inputData[item.name]}
+                      {...item}
+                    />
+                  );
+                })}
+                {/* <input type="text" maxLength={2} />
+                <input type="text" maxLength={2} /> */}
               </div>
-              <select name="" className="selection" id="">
-                <option value="AM">AM</option>
-                <option value="PM">PM</option>
+              <select
+                name=""
+                className="selection"
+                id=""
+                onClick={(e) => dropDownHandler(e)}
+              >
+                {dropdownOptions.map((item) => (
+                  <option key={item.value} value={item.value}>
+                    {item.value}
+                  </option>
+                ))}
+
+                {/* <option value="PM">PM</option> */}
               </select>
             </div>
           </div>
 
           <div className="no-of-people">
-            <span className="minus">-</span>
-            <span className="amount-of-people">1 people</span>
-            <span className="plus">+</span>
+            <span
+              className="minus"
+              onClick={decreament}
+              style={{ cursor: "pointer" }}
+            >
+              -
+            </span>
+            <span className="amount-of-people">{noOfPeople} of people</span>
+            <span
+              className="plus"
+              onClick={increament}
+              style={{ cursor: "pointer" }}
+            >
+              +
+            </span>
           </div>
-
+          {error && (
+            <p className="errorMessage">
+              The details entered are incorrect! <br />
+              Please check again!
+            </p>
+          )}
           <button className="reservation-booking-btn">
             make a reservation
           </button>

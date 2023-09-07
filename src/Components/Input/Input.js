@@ -21,7 +21,6 @@ const Input = (props) => {
             value={props.value}
             onChange={(e) => props.onchange(e)}
           />
-          {/* <span className="error">{props.errorMessage}</span> */}
         </>
       );
       break;
@@ -49,6 +48,7 @@ const Input = (props) => {
           onChange={(e) => props.onchange(e)}
           onBlur={triggerFocus}
           focused={focused.toString()}
+          maxLength={2}
           // type="number"
         />
       );
@@ -62,6 +62,8 @@ const Input = (props) => {
           onChange={(e) => props.onchange(e)}
           onBlur={triggerFocus}
           focused={focused.toString()}
+          maxLength={2}
+
           // type="number"
         />
       );
@@ -75,6 +77,38 @@ const Input = (props) => {
           onChange={(e) => props.onchange(e)}
           onBlur={triggerFocus}
           focused={focused.toString()}
+          maxLength={4}
+
+          // type="number"
+        />
+      );
+      break;
+    case "Hour":
+      element = (
+        <input
+          {...props}
+          className="duration"
+          value={props.value}
+          onChange={(e) => props.onchange(e)}
+          onBlur={triggerFocus}
+          focused={focused.toString()}
+          maxLength={2}
+
+          // type="number"
+        />
+      );
+      break;
+    case "Minutes":
+      element = (
+        <input
+          {...props}
+          className="duration"
+          value={props.value}
+          onChange={(e) => props.onchange(e)}
+          onBlur={triggerFocus}
+          focused={focused.toString()}
+          maxLength={2}
+
           // type="number"
         />
       );
