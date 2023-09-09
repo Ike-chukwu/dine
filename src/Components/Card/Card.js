@@ -7,9 +7,9 @@ const Card = (props) => {
   return (
     <div className="food-result">
       <div className="food-box">
-        <img src={chef1} alt="" />
-        <h2 className="menuItem-name">{props.name}</h2>
-        <Link to='/menu/1'>
+        <img src={props.imageSrc} alt="" />
+        <h2 className="menuItem-name">{props.mealName}</h2>
+        <Link to={`/menu/${props.id}`}>
           <button className="view-meal">view meal</button>
         </Link>
       </div>

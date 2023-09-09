@@ -35,7 +35,6 @@ const Input = (props) => {
             value={props.value}
             onChange={(e) => props.onchange(e)}
           />
-          {/* <span className="error">{props.errorMessage}</span> */}
         </>
       );
       break;
@@ -49,7 +48,6 @@ const Input = (props) => {
           onBlur={triggerFocus}
           focused={focused.toString()}
           maxLength={2}
-          // type="number"
         />
       );
       break;
@@ -64,7 +62,6 @@ const Input = (props) => {
           focused={focused.toString()}
           maxLength={2}
 
-          // type="number"
         />
       );
       break;
@@ -79,7 +76,6 @@ const Input = (props) => {
           focused={focused.toString()}
           maxLength={4}
 
-          // type="number"
         />
       );
       break;
@@ -94,7 +90,6 @@ const Input = (props) => {
           focused={focused.toString()}
           maxLength={2}
 
-          // type="number"
         />
       );
       break;
@@ -109,7 +104,6 @@ const Input = (props) => {
           focused={focused.toString()}
           maxLength={2}
 
-          // type="number"
         />
       );
       break;

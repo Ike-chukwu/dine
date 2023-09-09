@@ -53,7 +53,7 @@ export const Navbar = (props) => {
             </Link>
           </div>
           <div className="nav-wrapper">
-            <Link className="nav-link" to="/wishlist">
+            <Link className="nav-link" to="/favourites">
               favourites
             </Link>
           </div>

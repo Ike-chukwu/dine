@@ -27,7 +27,7 @@
         color: black;
         cursor: pointer;
 
-        .active {
+        &.clicked {
           background: black;
           color: white;
         }
@@ -39,7 +39,7 @@
       align-items: center;
       padding: 4rem 0 5rem;
       flex-wrap: wrap;
-      // justify-content: center;
+      justify-content: center;
       .food-box {
         width: 300px;
         border: 0.2rem solid black;

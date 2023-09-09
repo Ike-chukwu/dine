@@ -10,6 +10,7 @@ import Reservation from "./Pages/Reservation";
 import { useState } from "react";
 import Cart from "./Components/Cart/Cart";
 import ViewFoodPage from "./Components/ViewFoodPage/ViewFoodPage";
+import Favourites from "./Pages/Favourites";
 
 function App() {
   const [isCartActive, setCartActive] = useState(false);
@@ -21,9 +22,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/menu/:id" element={<ViewFoodPage/>} />
+        <Route path="/menu/:id" element={<ViewFoodPage />} />
         <Route path="/search/:id" element={<Search />} />
         <Route path="/reservation" element={<Reservation />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
       <Cart isCartActive={isCartActive} setCartActive={setCartActive} />
     </div>
