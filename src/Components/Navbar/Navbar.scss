@@ -41,37 +41,84 @@
       }
     }
 
-    .search-bar {
-      position: absolute;
-      top: 100%;
-      right: 1%;
-      width: 300px;
-      transform: scaleY(0);
-      transition: transform 0.3s ease-in-out;
-      transform-origin: top;
-      display: flex;
-      align-items: center;
-      height: 30px;
-      
-      input{
-        width: 70%;
-        display: block;
-        height: 100%;
-      }
-      &.clicked {
-        transform: scaleY(1);
+    .searchGroup {
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      background-color: rgba(18, 18, 18, 0.36);
+      backdrop-filter: blur(4px);
+      z-index: 150;
+      display: none;
+      padding-top: 4rem;
+
+      &.toggled {
+        display: unset;
       }
 
-      .search-btn{
-        padding: unset;
-        background: #f7e172;
-        text-transform: capitalize;
-        outline: none;
-        color: black;
-        border: none;
-        width: 30%;
-        height: 100%;
-        font-weight: 700;
+      .searchContent {
+        width: 1440px;
+        margin-inline: auto;
+        // transform: scaleY(0);
+        transition: all 1s ease-out;
+        transform-origin: top;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 30px;
+        // background: white;
+        z-index: 200;
+
+        .main-search {
+          background: white;
+          height: 40px;
+          width: 50%;
+          display: flex;
+          justify-content: space-between;
+          color: black;
+          align-items: center;
+          position: relative;
+
+          i {
+            padding-left: 1rem;
+          }
+          input {
+            height: 100%;
+            width: 95%;
+            border: none;
+            outline: none;
+          }
+          &.clicked {
+            transform: scaleY(1);
+          }
+
+          .searched-results {
+            position: absolute;
+            top: 100%;
+            background: white;
+            width: 100%;
+            // padding-block: 1.5rem;
+            height: fit-content;
+            overflow-y: scroll;
+            list-style: none;
+
+            li {
+              padding-inline: 1rem;
+              padding-block: 1rem;
+              // border-top: 0.1rem solid black;
+              // border-bottom: 0.1rem solid black;
+            }
+          }
+        }
+
+        .fa-close {
+          font-size: 3rem;
+
+          &:hover {
+            color: red;
+          }
+        }
       }
     }
   }

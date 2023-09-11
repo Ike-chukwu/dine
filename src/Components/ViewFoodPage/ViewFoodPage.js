@@ -47,7 +47,7 @@ const ViewFoodPage = () => {
       </div>
       <div className="product-category">
         <span className="category">main ingredients:</span>
-        <span className="category-name">{currentFood[0].strTags}</span>
+        <span className="category-name">{currentFood[0].strTags?currentFood[0].strTags:"No main ingredients"}</span>
       </div>
       <div className="btns">
         <div className="product-amount">
@@ -70,7 +70,7 @@ const ViewFoodPage = () => {
     <div className="div view-peroduct-parent">
       <section className="view-product-container">
         <Link to="/menu">
-          <span className="go-back">go back</span>
+          <span className="go-back">go back to menu</span>
         </Link>
 
         {food}

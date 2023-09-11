@@ -1,8 +1,34 @@
 import React from "react";
 import "./SearchedResult.scss";
 import Card from "../Card/Card";
+import { useContext } from "react";
+import { AuthContext } from "../../context";
 
-const SearchedResult = () => {
+const SearchedResult = (props) => {
+
+  const {
+    searchedResultLoading,
+    setSearchedResult,
+    searchedFood,
+    setSearchedFood,
+  } = useContext(AuthContext);
+
+
+  let foodResultRender;
+
+  if (props.foodResult) {
+    foodResultRender = props.foodResult.map((food) => (
+      <Card
+        name={food.strMeal}
+        key={food.idMeal}
+        id={food.idMeal}
+        picture={food.strMealThumb}
+      />
+    ));
+  } else {
+    foodResultRender = <p>No results found</p>;
+  }
+
   return (
     <section className="search-section">
       <div className="search-bar">
@@ -10,7 +36,8 @@ const SearchedResult = () => {
         <button className="search-btn">Search</button>
       </div>
       <div className="food-result">
-        <Card name="spaghetti" />
+        {foodResultRender}
+        {/* <Card name="spaghetti" /> */}
         {/* <p>No results found</p> */}
       </div>
     </section>
