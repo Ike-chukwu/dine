@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./ViewFoodPage.scss";
 import { Link, useParams } from "react-router-dom";
 import guard1 from "../../assets/images/staff/guard-1.jpg";
@@ -6,6 +6,7 @@ import ReservationBanner from "../ReservationBanner/ReservationBanner";
 import Footer from "../Footer/Footer";
 import Loader from "../../Components/Loader/Loader";
 import Error from "../../Components/Error/Error";
+import { AuthContext } from "../../context";
 
 const ViewFoodPage = () => {
   const { id } = useParams();
@@ -14,6 +15,29 @@ const ViewFoodPage = () => {
   const [currentFood, setCurrentFood] = useState();
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
+  const [itemAmount, setItemAmount] = useState(1);
+
+  const {
+    clearCart,
+    removeFromCartHandler,
+    addToCartHandler,
+    amountOfFood,
+    cartItems,
+  } = useContext(AuthContext);
+
+  //increase amount of food
+  const increaseAmount = () => {
+    setItemAmount(itemAmount + 1);
+  };
+
+  //decrease amount of food
+  const decreaseAmount = () => {
+    if (itemAmount <= 1) {
+      setItemAmount(1);
+      return;
+    }
+    setItemAmount(itemAmount - 1);
+  };
 
   const fetchCurrentFoodWithId = async () => {
     try {
@@ -77,11 +101,26 @@ const ViewFoodPage = () => {
             </div>
             <div className="btns">
               <div className="product-amount">
-                <div className="subtract">-</div>
-                <div className="amount">1</div>
-                <div className="add">+</div>
+                <div className="subtract" onClick={decreaseAmount}>
+                  -
+                </div>
+                <div className="amount">{itemAmount}</div>
+                <div className="add" onClick={increaseAmount}>
+                  +
+                </div>
               </div>
-              <button className="add-btn ">
+              <button
+                className="add-btn "
+                onClick={() =>
+                  addToCartHandler({
+                    id: id,
+                    name: currentFood[0].strMeal,
+                    price: currentFood[0].idMeal.slice(-2),
+                    amount: itemAmount,
+                    image:currentFood[0].strMealThumb
+                  })
+                }
+              >
                 add to cart <i className="fas fa-shopping-cart"></i>
               </button>
               <button className="add-btn wishlist">

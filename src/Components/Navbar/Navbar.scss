@@ -39,6 +39,25 @@
       i {
         cursor: pointer;
       }
+
+      .icon-cart {
+        position: relative;
+
+        .number {
+          position: absolute;
+          right: -100%;
+          top: -100%;
+          font-weight: 600;
+          background: white;
+          color: black;
+          height: 25px;
+          width: 25px;
+          text-align: center;
+          line-height: 25px;
+          border-radius: 50%;
+          font-size: 1.6rem;
+        }
+      }
     }
 
     .searchGroup {
@@ -108,10 +127,10 @@
               padding-inline: 1rem;
               padding-block: 1rem;
 
-              &:hover{
+              &:hover {
                 cursor: pointer;
                 font-weight: bold;
-                background: #F7E172;
+                background: #f7e172;
               }
               // border-top: 0.1rem solid black;
               // border-bottom: 0.1rem solid black;

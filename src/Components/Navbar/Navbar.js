@@ -11,6 +11,12 @@ export const Navbar = (props) => {
   const { searchedFood, setSearchedFood } = useContext(AuthContext);
   const [foodResult, setFoodResult] = useState(null);
   const inputRef = useRef();
+  const { cartItems } = useContext(AuthContext);
+
+  //variable that stores the total number of foods a user has in his cart
+  const totalAmountofGoods = cartItems.reduce((totalAmount, item) => {
+    return totalAmount + item.amount;
+  }, 0);
 
   const navigate = useNavigate();
 
@@ -40,7 +46,6 @@ export const Navbar = (props) => {
       // Otherwise, fetch the data
       fetchData();
     }
-
   };
 
   //function that sarches for a particular food
@@ -174,10 +179,15 @@ export const Navbar = (props) => {
               ></i>
             </div>
           </div>
-          <i
-            className="fas fa-shopping-cart"
-            onClick={() => props.setCartActive(!props.isCartActive)}
-          ></i>
+          <div className="icon-cart">
+            {totalAmountofGoods > 0 && 
+              <div className="number">{totalAmountofGoods}</div>
+            }
+            <i
+              className="fas fa-shopping-cart"
+              onClick={() => props.setCartActive(!props.isCartActive)}
+            ></i>
+          </div>
           <div className="menu-bar-icon"></div>
         </div>
       </div>

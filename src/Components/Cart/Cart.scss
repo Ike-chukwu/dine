@@ -1,14 +1,14 @@
 .cart-parent {
   width: 400px;
   background: #111111;
-  padding: 4rem;
+  padding: 3rem;
   color: color;
   position: fixed;
   top: 11.5%;
-  bottom: 0;
   opacity: 0;
   right: -100%;
   transition: all .5s ease-in-out;
+  height: auto;
 
   &.activated{
     right: 0%;
@@ -18,7 +18,7 @@
 
   .cart-title {
     color: white;
-    font-size: 2.5rem;
+    font-size: 1.4rem;
     text-transform: capitalize;
   }
 
@@ -83,7 +83,47 @@
         right: 1rem;
         cursor: pointer;
         font-size: 1.2rem;
+        bottom: 1rem;
+        cursor: pointer;
+
+        &:hover{
+          color: red;
+        }
     }
     }
+  }
+
+  .total-price{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+
+    .total-title{
+      font-size: 1.6rem;
+      text-transform: capitalize;
+      font-weight: bold;
+    }
+
+    .total-price{
+      font-size: 1.6rem;
+    }
+  }
+
+  .checkout{
+    width: 100%;
+    padding: 2rem;
+    font-size:1.6rem ;
+    background: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .empty-cart{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
   }
 }
