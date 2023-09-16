@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
   //function that adds food to cart
   const addToCartHandler = (addedFood) => {
     const isFoodInCart = cartItems.some((food) => food.id == addedFood.id);
-    console.log(isFoodInCart);
     if (isFoodInCart) {
       const newArray = cartItems.map((item) => {
         if (item.id == addedFood.id) {
@@ -58,7 +57,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log(cartItems);
   }, [cartItems]);
 
   //function that clears cart

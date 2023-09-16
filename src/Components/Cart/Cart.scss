@@ -8,7 +8,9 @@
   opacity: 0;
   right: -100%;
   transition: all .5s ease-in-out;
-  height: auto;
+  height: 40rem;
+  overflow-y: scroll;
+
 
   &.activated{
     right: 0%;

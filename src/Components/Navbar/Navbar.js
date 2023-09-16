@@ -40,8 +40,8 @@ export const Navbar = (props) => {
     };
     if (inputValue === "") {
       // If the input is empty, clear the results
-      setFoodResult([]);
-      console.log(foodResult);
+      setFoodResult(null);
+      console.log(inputValue);
     } else {
       // Otherwise, fetch the data
       fetchData();
@@ -50,27 +50,9 @@ export const Navbar = (props) => {
 
   //function that sarches for a particular food
   const clickedFoodHandler = async (e, id) => {
-    // const data = await fetch(
-    //   `https://www.themealdb.com/api/json/v1/1/search.php?s=${food}`
-    // );
-    // const result = await data.json();
-    // const foodDetail = result.meals;
     navigate(`/menu/${id}`);
-    // setSearchbar(false);
   };
 
-  // const fetchSearchedValue = async () => {
-  //   const data = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchedFood}`)
-  //   const result = await data.json()
-  //   const foodDetail = result.meals
-  //   console.log(foodDetail);
-  //   // setFoodResult(foodDetail)
-  //   // setSearchedFood("");
-  // }
-
-  // useEffect(() => {
-
-  // }, [se])
 
   useEffect(() => {
     const html = document.querySelector("html");
