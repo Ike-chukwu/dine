@@ -15,28 +15,43 @@ export const Navbar = (props) => {
   const navigate = useNavigate();
 
   // function that handles input change
-  const foodInput = async (e) => {
-    setSearchedFood(e.target.value);
-    const data = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchedFood}`
-    );
-    const result = await data.json();
-    const foodDetail = result.meals;
-    setFoodResult(foodDetail);
-    console.log(foodDetail);
+  const foodInput = (e) => {
+    const inputValue = e.target.value;
+    setSearchedFood(inputValue); // Update searchedFood immediately
+
+    // Use the updated searchedFood value in the API request
+    const fetchData = async () => {
+      try {
+        const data = await fetch(
+          `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputValue}`
+        );
+        const result = await data.json();
+        const foodDetail = result.meals;
+        setFoodResult(foodDetail);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (inputValue === "") {
+      // If the input is empty, clear the results
+      setFoodResult([]);
+      console.log(foodResult);
+    } else {
+      // Otherwise, fetch the data
+      fetchData();
+    }
+
   };
 
   //function that sarches for a particular food
-  const searchFoodHandler = (e) => {
-    e.preventDefault();
-    if (searchedFood == "" || searchedFood == null) {
-      console.log("yes");
-      inputRef.current.style.border = "0.2rem solid red";
-    } else {
-      inputRef.current.style.border = "unset";
-      navigate(`/search/${searchedFood}`);
-      setSearchbar(false);
-    }
+  const clickedFoodHandler = async (e, id) => {
+    // const data = await fetch(
+    //   `https://www.themealdb.com/api/json/v1/1/search.php?s=${food}`
+    // );
+    // const result = await data.json();
+    // const foodDetail = result.meals;
+    navigate(`/menu/${id}`);
+    // setSearchbar(false);
   };
 
   // const fetchSearchedValue = async () => {
@@ -58,11 +73,6 @@ export const Navbar = (props) => {
       html.style.overflow = touched ? "hidden" : "auto";
     }
   }, [touched]);
-
-
-  
-
-
 
   return (
     <div className="nav-parent">
@@ -100,7 +110,13 @@ export const Navbar = (props) => {
         </div>
 
         <div className="icons">
-          <i className="fas fa-search" onClick={() => setSearchbar(true)}></i>
+          <i
+            className="fas fa-search"
+            onClick={() => {
+              setSearchbar(true);
+              setTouched(true);
+            }}
+          ></i>
           <div
             className={
               isSearchBarActive ? "searchGroup toggled" : "searchGroup"
@@ -109,6 +125,7 @@ export const Navbar = (props) => {
               setSearchbar(false);
               setTouched(false);
               setSearchedFood("");
+              setFoodResult([]);
             }}
           >
             <div className="searchContent">
@@ -122,6 +139,7 @@ export const Navbar = (props) => {
                     setSearchbar(false);
                     setTouched(false);
                     setSearchedFood("");
+                    setFoodResult([]);
                   }}
                 ></i>
                 <input
@@ -133,7 +151,12 @@ export const Navbar = (props) => {
                 />
                 <ul className="searched-results">
                   {foodResult?.map((result) => (
-                    <li>{result.strMeal}</li>
+                    <li
+                      key={result.idMeal}
+                      onClick={(e) => clickedFoodHandler(e, result.idMeal)}
+                    >
+                      {result.strMeal}
+                    </li>
                   ))}
                   {/* <li>me</li>
                   <li>me</li>
@@ -142,7 +165,12 @@ export const Navbar = (props) => {
               </div>
               <i
                 className="fas fa-close"
-                onClick={() => setSearchbar(false)}
+                onClick={() => {
+                  setSearchbar(false);
+                  setTouched(false);
+                  setSearchedFood("");
+                  setFoodResult([]);
+                }}
               ></i>
             </div>
           </div>

@@ -12,9 +12,9 @@ const FoodCategory = () => {
   const [currentCategory, setCategory] = useState();
   const [data, setData] = useState();
   const [foodData, setFoodData] = useState();
-  const [categoryLoadingState, setCategoryLoadingState] = useState(false);
+  const [categoryLoadingState, setCategoryLoadingState] = useState(true);
   const [foodInCategoryLoadingState, setFoodInCategoryLoadingState] =
-    useState(false);
+    useState(true);
   const [categoryErrorMessage, setCategoryErrorMessage] = useState(null);
   const [foodInCategoryErrorMessage, setFoodInCategoryErrorMessage] =
     useState(null);
@@ -24,7 +24,6 @@ const FoodCategory = () => {
 
   //fetch all meal categories
   const fetchCategory = async () => {
-    setCategoryLoadingState(true);
     try {
       const newData = await fetch(
         "https://www.themealdb.com/api/json/v1/1/categories.php"
@@ -35,15 +34,13 @@ const FoodCategory = () => {
       setCategory(listOfCategories[0].strCategory);
       fetchFoodInCategory(listOfCategories[0].strCategory);
       setCategoryLoadingState(false);
-      setCategoryErrorMessage(null);
     } catch (error) {
-      setCategoryLoadingState(true);
+      setCategoryLoadingState(false);
       setCategoryErrorMessage(error);
     }
   };
 
   const fetchFoodInCategory = async (food) => {
-    setFoodInCategoryLoadingState(true);
     try {
       const foodData = await fetch(
         `https://www.themealdb.com/api/json/v1/1/filter.php?c=${food}`
@@ -52,9 +49,8 @@ const FoodCategory = () => {
       const meals = result.meals;
       setFoodData(meals);
       setFoodInCategoryLoadingState(false);
-      setFoodInCategoryErrorMessage(null);
     } catch (error) {
-      setFoodInCategoryLoadingState(true);
+      setFoodInCategoryLoadingState(false);
       setFoodInCategoryErrorMessage(error);
     }
   };
@@ -63,52 +59,15 @@ const FoodCategory = () => {
     fetchCategory();
   }, []);
 
+  //show loader if any of the apis havent gotten a result
   if (categoryLoadingState || foodInCategoryLoadingState) {
-    if (categoryErrorMessage || foodInCategoryErrorMessage) {
-      return <Error>Sorry!You've reached a dead end</Error>;
-    } else {
-      return (
-        <>
-          <Loader />
-        </>
-      );
-    }
-  } else {
-    //render btns when data exists
-    if (data) {
-      btns = data.map((category) => {
-        return (
-          <div
-            onClick={() => {
-              setCategory(category.strCategory);
-              console.log(currentCategory);
-              fetchFoodInCategory(category.strCategory);
-            }}
-            className={
-              category.strCategory == currentCategory
-                ? "single-category clicked"
-                : "single-category"
-            }
-          >
-            {category.strCategory}
-          </div>
-        );
-      });
-    }
-
-    ////render food options when food data exists
-    if (foodData) {
-      foods = foodData.map((food) => {
-        return (
-          <Card
-            key={food.idMeal}
-            imageSrc={food.strMealThumb}
-            mealName={food.strlMeal}
-            id={food.idMeal}
-          />
-        );
-      });
-    }
+    return <Loader />;
+  }
+  //show error if any of the api calls failed
+  if (categoryErrorMessage || foodInCategoryErrorMessage) {
+    return <Error>Sorry!You've reached a dead end</Error>;
+  }
+  //return the data from the two api calls
     return (
       <div className="menu-parent">
         <section className="menu">
@@ -116,17 +75,42 @@ const FoodCategory = () => {
             What category does the food <br /> you want fall under?
           </h1>
           <div className="btn-categories">
-            {btns}
+            {data.map((category) => {
+              return (
+                <div
+                  onClick={() => {
+                    setCategory(category.strCategory);
+                    setFoodInCategoryLoadingState(true);
+                    console.log(foodInCategoryLoadingState);
+                    fetchFoodInCategory(category.strCategory);
+                  }}
+                  className={
+                    category.strCategory == currentCategory
+                      ? "single-category clicked"
+                      : "single-category"
+                  }
+                >
+                  {category.strCategory}
+                </div>
+              );
+            })}
           </div>
           <div className="food-result">
-            {foods}
+            {foodData.map((food) => {
+              return (
+                <Card
+                  key={food.idMeal}
+                  imageSrc={food.strMealThumb}
+                  mealName={food.strMeal}
+                  id={food.idMeal}
+                />
+              );
+            })}
           </div>
         </section>
       </div>
     );
   }
-};
+;
 
 export default FoodCategory;
-
-//alighn result to the left if array contains less than 4 foods

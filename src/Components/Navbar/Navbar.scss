@@ -99,13 +99,20 @@
             background: white;
             width: 100%;
             // padding-block: 1.5rem;
-            height: fit-content;
+            min-height: 0;
+            max-height: 300px;
             overflow-y: scroll;
             list-style: none;
 
             li {
               padding-inline: 1rem;
               padding-block: 1rem;
+
+              &:hover{
+                cursor: pointer;
+                font-weight: bold;
+                background: #F7E172;
+              }
               // border-top: 0.1rem solid black;
               // border-bottom: 0.1rem solid black;
             }
