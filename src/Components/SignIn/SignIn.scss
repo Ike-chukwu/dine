@@ -1,0 +1,43 @@
+.parent-sign-in {
+  background: black;
+  color: white;
+  height: 100vh;
+  .sign-in-page {
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+
+    .sign-in-logo-image {
+      width: 180px;
+    }
+
+    .sign-in-brief {
+      font-size: 2rem;
+      text-align: center;
+      width: 60%;
+      margin-inline: auto;
+      line-height: 1.5;
+    }
+
+    .google-btn {
+      display: flex;
+      align-items: center;
+      background: white;
+      color: black;
+      gap: 1rem;
+      transition: all 0.3s ease;
+      padding-inline: 2rem;
+      font-size: 1.6rem;
+
+      &:hover {
+        background: none;
+        border: 0.2rem solid white;
+        cursor: pointer;
+        color: white;
+      }
+    }
+  }
+}

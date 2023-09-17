@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
-
+import {GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut,  onAuthStateChanged} from "firebase/auth"
+import {auth} from "./Firebase"
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -63,6 +64,29 @@ export const AuthProvider = ({ children }) => {
   const clearCart = () => setCartItems([]);
 
 
+  ///authentication
+  const [user,setUser] = useState({})
+  
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider()
+    // signInWithPopup(auth, provider)
+    signInWithRedirect(auth, provider)
+  }
+  const logOut = () => {
+    signOut(auth)
+  }
+
+  useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
+        setUser(currentUser)
+        console.log('User', currentUser);
+      })
+      return () => {
+        unsubscribe()
+      }
+  }, [])
+  
+
   return (
     <AuthContext.Provider
       value={{
@@ -74,6 +98,9 @@ export const AuthProvider = ({ children }) => {
         cartItems,
         increaseAmountInCart,
         removeItemFromCart,
+        googleSignIn,
+        logOut,
+        user
       }}
     >
       {children}

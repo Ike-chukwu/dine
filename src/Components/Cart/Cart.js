@@ -3,6 +3,7 @@ import "./Cart.scss";
 import image from "../../assets/images/homepage/salmon-desktop-tablet.jpg";
 import { useEffect } from "react";
 import { AuthContext } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 const Cart = (props) => {
   const {
@@ -13,11 +14,23 @@ const Cart = (props) => {
     cartItems,
     increaseAmountInCart,
     removeItemFromCart,
+    user,
   } = useContext(AuthContext);
 
   const totalPrice = cartItems.reduce((price, item) => {
     return price + parseInt(item.amount) * parseInt(item.price);
   }, 0);
+
+  const navigate = useNavigate();
+
+  //functions that navigates a user to checkout
+  const handleCheckOut = () => {
+    props.setCartActive(false)
+    if (!user) {
+      return navigate("/signin");
+    }
+    return navigate("/checkout");
+  };
 
   useEffect(() => {
     const html = document.querySelector("html");
@@ -81,7 +94,7 @@ const Cart = (props) => {
               <p className="total-title">total:</p>
               <sapn className="total-price">${totalPrice}.00</sapn>
             </div>
-            <div className="checkout">checkout</div>
+            <div className="checkout" onClick={handleCheckOut}>checkout</div>
           </>
         ) : (
           <p className="empty-cart">Your cart is empty</p>

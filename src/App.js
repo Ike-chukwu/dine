@@ -11,6 +11,9 @@ import { useState } from "react";
 import Cart from "./Components/Cart/Cart";
 import ViewFoodPage from "./Components/ViewFoodPage/ViewFoodPage";
 import Favourites from "./Pages/Favourites";
+import SignIn from "./Components/SignIn/SignIn";
+import Checkout from "./Components/Checkout/Checkout";
+import Protected from "./Components/Protected/Protected";
 
 function App() {
   const [isCartActive, setCartActive] = useState(false);
@@ -26,6 +29,15 @@ function App() {
         <Route path="/search/:id" element={<Search />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/favourites" element={<Favourites />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route
+          path="/checkout"
+          element={
+            <Protected>
+              <Checkout />
+            </Protected>
+          }
+        />
       </Routes>
       <Cart isCartActive={isCartActive} setCartActive={setCartActive} />
     </div>

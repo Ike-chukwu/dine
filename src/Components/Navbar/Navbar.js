@@ -11,7 +11,7 @@ export const Navbar = (props) => {
   const { searchedFood, setSearchedFood } = useContext(AuthContext);
   const [foodResult, setFoodResult] = useState(null);
   const inputRef = useRef();
-  const { cartItems } = useContext(AuthContext);
+  const { cartItems, logOut, user } = useContext(AuthContext);
 
   //variable that stores the total number of foods a user has in his cart
   const totalAmountofGoods = cartItems.reduce((totalAmount, item) => {
@@ -54,6 +54,16 @@ export const Navbar = (props) => {
   };
 
 
+  //function that handles sign out
+
+  const handleSignOut = async () => {
+    try {
+      await logOut()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     const html = document.querySelector("html");
     if (html) {
@@ -89,11 +99,19 @@ export const Navbar = (props) => {
               favourites
             </Link>
           </div>
-          {/* <div className="nav-wrapper">
-            <Link className="nav-link" to="/account">
-              sign-in/registration
-            </Link>
-          </div> */}
+          {user?.displayName ? (
+            <div className="nav-wrapper">
+              <Link className="nav-link" to="/signIn" onClick={handleSignOut}>
+                sign out
+              </Link>
+            </div>
+          ) : (
+            <div className="nav-wrapper">
+              <Link className="nav-link" to="/signIn">
+                sign-in/registration
+              </Link>
+            </div>
+          )}
         </div>
 
         <div className="icons">
@@ -162,9 +180,9 @@ export const Navbar = (props) => {
             </div>
           </div>
           <div className="icon-cart">
-            {totalAmountofGoods > 0 && 
+            {totalAmountofGoods > 0 && (
               <div className="number">{totalAmountofGoods}</div>
-            }
+            )}
             <i
               className="fas fa-shopping-cart"
               onClick={() => props.setCartActive(!props.isCartActive)}
