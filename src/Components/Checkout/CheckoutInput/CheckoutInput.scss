@@ -1,0 +1,48 @@
+.c-input-pack {
+  width: 49%;
+
+  .focusedInput {
+    width: 100%;
+
+    &:invalid[focused="true"] {
+      border: 0.1rem solid red;
+
+      & ~ .errorMessage {
+        display: unset;
+      }
+    }
+  }
+
+  .errorMessage {
+    color: red;
+    margin-top: 0.3rem;
+    font-size: 1.2rem;
+    display: none;
+  }
+}
+
+.address-parent {
+  .address {
+    width: 100%;
+    padding: 1rem;
+
+    &::placeholder {
+      text-transform: capitalize;
+    }
+
+    &:invalid[focused="true"] {
+      border: 0.1rem solid red;
+
+      & ~ .errorMessage {
+        display: unset;
+      }
+    }
+  }
+
+  .errorMessage {
+    color: red;
+    margin-top: 0.3rem;
+    font-size: 1.2rem;
+    display: none;
+  }
+}
