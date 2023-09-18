@@ -1,12 +1,19 @@
 import { createContext, useEffect, useState } from "react";
-import {GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut,  onAuthStateChanged} from "firebase/auth"
-import {auth} from "./Firebase"
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth } from "./Firebase";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [searchedFood, setSearchedFood] = useState();
   const [searchedResultLoading, setSearchedResult] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [favs, addToFavs] = useState([]);
 
   //function that adds food to cart
   const addToCartHandler = (addedFood) => {
@@ -57,35 +64,32 @@ export const AuthProvider = ({ children }) => {
     setCartItems(filteredArray);
   };
 
-  useEffect(() => {
-  }, [cartItems]);
+  useEffect(() => {}, [cartItems]);
 
   //function that clears cart
   const clearCart = () => setCartItems([]);
 
-
   ///authentication
-  const [user,setUser] = useState({})
-  
+  const [user, setUser] = useState({});
+
   const googleSignIn = () => {
-    const provider = new GoogleAuthProvider()
+    const provider = new GoogleAuthProvider();
     // signInWithPopup(auth, provider)
-    signInWithRedirect(auth, provider)
-  }
+    signInWithRedirect(auth, provider);
+  };
   const logOut = () => {
-    signOut(auth)
-  }
+    signOut(auth);
+  };
 
   useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
-        setUser(currentUser)
-        console.log('User', currentUser);
-      })
-      return () => {
-        unsubscribe()
-      }
-  }, [])
-  
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log("User", currentUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <AuthContext.Provider
@@ -100,7 +104,9 @@ export const AuthProvider = ({ children }) => {
         removeItemFromCart,
         googleSignIn,
         logOut,
-        user
+        user,
+        favs,
+        addToFavs,
       }}
     >
       {children}

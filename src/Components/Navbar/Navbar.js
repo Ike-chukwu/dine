@@ -53,16 +53,15 @@ export const Navbar = (props) => {
     navigate(`/menu/${id}`);
   };
 
-
   //function that handles sign out
 
   const handleSignOut = async () => {
     try {
-      await logOut()
+      await logOut();
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     const html = document.querySelector("html");
@@ -94,11 +93,13 @@ export const Navbar = (props) => {
               menu
             </Link>
           </div>
-          <div className="nav-wrapper">
-            <Link className="nav-link" to="/favourites">
-              favourites
-            </Link>
-          </div>
+          {user && (
+            <div className="nav-wrapper">
+              <Link className="nav-link" to="/favourites">
+                favourites
+              </Link>
+            </div>
+          )}
           {user?.displayName ? (
             <div className="nav-wrapper">
               <Link className="nav-link" to="/signIn" onClick={handleSignOut}>

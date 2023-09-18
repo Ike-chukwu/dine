@@ -28,7 +28,14 @@ function App() {
         <Route path="/menu/:id" element={<ViewFoodPage />} />
         <Route path="/search/:id" element={<Search />} />
         <Route path="/reservation" element={<Reservation />} />
-        <Route path="/favourites" element={<Favourites />} />
+        <Route
+          path="/favourites"
+          element={
+            <Protected>
+              <Favourites />
+            </Protected>
+          }
+        />
         <Route path="/signin" element={<SignIn />} />
         <Route
           path="/checkout"

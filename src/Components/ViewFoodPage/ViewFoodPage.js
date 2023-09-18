@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./ViewFoodPage.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import guard1 from "../../assets/images/staff/guard-1.jpg";
 import ReservationBanner from "../ReservationBanner/ReservationBanner";
 import Footer from "../Footer/Footer";
@@ -10,12 +10,14 @@ import { AuthContext } from "../../context";
 
 const ViewFoodPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   let food;
   //state that stores the current food gotten from the id
   const [currentFood, setCurrentFood] = useState();
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
   const [itemAmount, setItemAmount] = useState(1);
+  const [isInFav, setIsInFav] = useState(false);
 
   const {
     clearCart,
@@ -23,6 +25,9 @@ const ViewFoodPage = () => {
     addToCartHandler,
     amountOfFood,
     cartItems,
+    user,
+    favs,
+    addToFavs,
   } = useContext(AuthContext);
 
   //increase amount of food
@@ -39,6 +44,24 @@ const ViewFoodPage = () => {
     setItemAmount(itemAmount - 1);
   };
 
+  //function that adds food to favs
+  const addToFavsHandler = (food) => {
+    if (user == null) {
+      navigate("/signin");
+      return;
+    }
+    addToFavs([...favs, food]);
+    setIsInFav(true)
+  };
+
+  //function that removes food from favs
+  const removeFromFavsHandler = (food) => {
+    const newFavsArray = favs.filter((item) => item.id !== food.id);
+    addToFavs(newFavsArray);
+    setIsInFav(false)
+  };
+
+  //function that fetches food from api with the id of the food
   const fetchCurrentFoodWithId = async () => {
     try {
       const foodData = await fetch(
@@ -60,6 +83,13 @@ const ViewFoodPage = () => {
   useEffect(() => {
     fetchCurrentFoodWithId();
   }, [id]);
+
+  useEffect(() => {
+    const verify = favs.some((food) => food.id == id);
+    if (verify) {
+      setIsInFav(true);
+    }
+  }, [isInFav]);
 
   if (loading) return <Loader />;
   if (errorMessage) return <Error>Sorry!You've reached a dead end</Error>;
@@ -117,15 +147,43 @@ const ViewFoodPage = () => {
                     name: currentFood[0].strMeal,
                     price: currentFood[0].idMeal.slice(-2),
                     amount: itemAmount,
-                    image:currentFood[0].strMealThumb
+                    image: currentFood[0].strMealThumb,
                   })
                 }
               >
                 add to cart <i className="fas fa-shopping-cart"></i>
               </button>
-              <button className="add-btn wishlist">
-                Add to wishlist <i className="fas fa-heart"></i>
-              </button>
+              {isInFav ? (
+                <button
+                  className="add-btn wishlist"
+                  onClick={() =>
+                    removeFromFavsHandler({
+                      id: id,
+                      name: currentFood[0].strMeal,
+                      price: currentFood[0].idMeal.slice(-2),
+                      amount: itemAmount,
+                      image: currentFood[0].strMealThumb,
+                    })
+                  }
+                >
+                  Remove from favourites <i className="fas fa-thumbs-down"></i>
+                </button>
+              ) : (
+                <button
+                  className="add-btn wishlist"
+                  onClick={() =>
+                    addToFavsHandler({
+                      id: id,
+                      name: currentFood[0].strMeal,
+                      price: currentFood[0].idMeal.slice(-2),
+                      amount: itemAmount,
+                      image: currentFood[0].strMealThumb,
+                    })
+                  }
+                >
+                  Add to favourites <i className="fas fa-heart"></i>
+                </button>
+              )}
             </div>
           </div>
         </div>
