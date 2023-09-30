@@ -31,6 +31,7 @@ const FoodCategory = () => {
       const result = await newData.json();
       const listOfCategories = result.categories;
       setData(listOfCategories);
+      console.log(listOfCategories);
       setCategory(listOfCategories[0].strCategory);
       fetchFoodInCategory(listOfCategories[0].strCategory);
       setCategoryLoadingState(false);
@@ -48,6 +49,7 @@ const FoodCategory = () => {
       const result = await foodData.json();
       const meals = result.meals;
       setFoodData(meals);
+      console.log(meals);
       setFoodInCategoryLoadingState(false);
     } catch (error) {
       setFoodInCategoryLoadingState(false);

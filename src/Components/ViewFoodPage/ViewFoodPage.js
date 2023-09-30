@@ -7,6 +7,17 @@ import Footer from "../Footer/Footer";
 import Loader from "../../Components/Loader/Loader";
 import Error from "../../Components/Error/Error";
 import { AuthContext } from "../../context";
+import { auth, db } from "../../Firebase";
+import {
+  FieldValue,
+  arrayRemove,
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 const ViewFoodPage = () => {
   const { id } = useParams();
@@ -45,20 +56,71 @@ const ViewFoodPage = () => {
   };
 
   //function that adds food to favs
-  const addToFavsHandler = (food) => {
+  const addToFavsHandler = async (food) => {
+    //navigates a user to the sign in page if user isnt logged in
     if (user == null) {
       navigate("/signin");
       return;
     }
+
+    const userId = user.uid;
+    const docRef = doc(db, "users", userId);
+
+    // Get the current data of the user's document
+    const docSnapshot = await getDoc(docRef);
+    if (docSnapshot.exists()) {
+      const userData = docSnapshot.data();
+
+      // Check if "likes" array exists, if not, create it
+      if (!userData.likes) {
+        userData.likes = [];
+      }
+
+      // Check if the food.id is not already in the "likes" array
+      if (!userData.likes.includes(food.id)) {
+        // Add the new item to the "likes" array using arrayUnion
+        await updateDoc(docRef, {
+          likes: arrayUnion(food.id),
+        });
+
+        // Update your local state accordingly
+        addToFavs([...favs, food]);
+        setIsInFav(true);
+      } else {
+        // The item is already in the "likes" array
+        // You can handle this case as needed, e.g., show a message
+        console.log("Item already in favorites");
+      }
+    } else {
+      const initialUserData = {
+        likes: [food.id], // You can initialize with the first liked item
+        // Add other user data fields as needed
+      };
+
+      // Set the initial user data in Firestore
+      await setDoc(docRef, initialUserData);
+
+      // Update your local state accordingly
+      addToFavs([...favs, food]);
+      setIsInFav(true);
+
+      console.log("User document created with initial data");
+    }
+
     addToFavs([...favs, food]);
-    setIsInFav(true)
+    setIsInFav(true);
   };
 
   //function that removes food from favs
-  const removeFromFavsHandler = (food) => {
+  const removeFromFavsHandler = async (food) => {
+    const userId = user.uid;
+    const docRef = doc(db, "users", user.uid);
+    await updateDoc(docRef, {
+      likes: arrayRemove(food.id),
+    });
     const newFavsArray = favs.filter((item) => item.id !== food.id);
     addToFavs(newFavsArray);
-    setIsInFav(false)
+    setIsInFav(false);
   };
 
   //function that fetches food from api with the id of the food
@@ -85,9 +147,30 @@ const ViewFoodPage = () => {
   }, [id]);
 
   useEffect(() => {
-    const verify = favs.some((food) => food.id == id);
-    if (verify) {
-      setIsInFav(true);
+    const user = auth.currentUser;
+
+    // If the user is authenticated, check if the item is in their favorites
+    if (user) {
+      const userId = user.uid;
+      const userDocRef = doc(db, "users", userId);
+
+      getDoc(userDocRef)
+        .then((docSnapshot) => {
+          if (docSnapshot.exists()) {
+            const userData = docSnapshot.data();
+            if (userData.likes && userData.likes.includes(id)) {
+              setIsInFav(true);
+            } else {
+              setIsInFav(false);
+            }
+          }
+        })
+        .catch((error) => {
+          console.error("Error checking user favorites:", error);
+        });
+    } else {
+      // User is not authenticated, so always display "Add to Favorites"
+      setIsInFav(false);
     }
   }, [isInFav]);
 
