@@ -25,7 +25,7 @@ const Cart = (props) => {
 
   //functions that navigates a user to checkout
   const handleCheckOut = () => {
-    props.setCartActive(false)
+    props.setCartActive(false);
     if (!user) {
       return navigate("/signin");
     }
@@ -46,7 +46,7 @@ const Cart = (props) => {
       <h2 className="cart-title">Your food cart</h2>
       <div className="food-cart-details">
         {cartItems.map((item) => (
-          <div className="food-item">
+          <div className="food-item" key={item.name}>
             <div className="number">
               <span
                 className="cart-plus"
@@ -92,9 +92,11 @@ const Cart = (props) => {
           <>
             <div className="total-price">
               <p className="total-title">total:</p>
-              <sapn className="total-price">${totalPrice}.00</sapn>
+              <span className="total-price">${totalPrice}.00</span>
             </div>
-            <div className="checkout" onClick={handleCheckOut}>checkout</div>
+            <div className="checkout" onClick={handleCheckOut}>
+              checkout
+            </div>
           </>
         ) : (
           <p className="empty-cart">Your cart is empty</p>

@@ -10,9 +10,13 @@ import { auth } from "./Firebase";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  let cartItemsFromLocalStorage = JSON.parse(
+    localStorage.getItem("cart") || "[]"
+  );
+
   const [searchedFood, setSearchedFood] = useState();
+  const [cartItems, setCartItems] = useState(cartItemsFromLocalStorage);
   const [searchedResultLoading, setSearchedResult] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
   const [favs, addToFavs] = useState([]);
 
   //function that adds food to cart
@@ -64,8 +68,6 @@ export const AuthProvider = ({ children }) => {
     setCartItems(filteredArray);
   };
 
-  useEffect(() => {}, [cartItems]);
-
   //function that clears cart
   const clearCart = () => setCartItems([]);
 
@@ -91,8 +93,9 @@ export const AuthProvider = ({ children }) => {
     };
   }, []);
 
-
-  
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <AuthContext.Provider
@@ -110,6 +113,7 @@ export const AuthProvider = ({ children }) => {
         user,
         favs,
         addToFavs,
+        setCartItems
       }}
     >
       {children}

@@ -14,6 +14,8 @@ import Favourites from "./Pages/Favourites";
 import SignIn from "./Components/SignIn/SignIn";
 import Checkout from "./Components/Checkout/Checkout";
 import Protected from "./Components/Protected/Protected";
+import Success from "./Pages/Success";
+import Cancel from "./Pages/Cancel";
 
 function App() {
   const [isCartActive, setCartActive] = useState(false);
@@ -45,6 +47,8 @@ function App() {
             </Protected>
           }
         />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
       </Routes>
       <Cart isCartActive={isCartActive} setCartActive={setCartActive} />
     </div>

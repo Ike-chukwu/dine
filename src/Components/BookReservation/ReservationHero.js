@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ReservationHero.scss";
 import Input from "../Input/Input";
+import emailjs from "@emailjs/browser";
 
 const ReservationHero = () => {
   //state that saves all values from all input fields
@@ -48,7 +49,7 @@ const ReservationHero = () => {
       name: "Name",
       required: true,
       errorMessage: "This field cannot be empty",
-      pattern: "^.{6,}$",
+      pattern: "^(?!s*$).+",
     },
     {
       id: 1,
@@ -130,12 +131,40 @@ const ReservationHero = () => {
       inputData.Minutes,
       inputData.Minutes
     );
-    const currentDate = new Date();
+    const formattedDate = userDate.toGMTString();
 
-    if (userDate <= currentDate) {
+    const currentDate = new Date();
+    const emailData = {
+      Email: inputData.Email,
+      Name: inputData.Name,
+      formattedDate: formattedDate,
+      number: noOfPeople,
+      // Add other form fields as needed
+    };
+
+    if (new Date(formattedDate) <= new Date(currentDate)) {
       setError(true);
+      console.log(error);
+      return;
     } else {
       setError(false);
+      emailjs
+        .send(
+          "service_1i3c82l",
+          "template_q1vt0hp",
+          emailData,
+          "1Pq9nLSwNG0YDaXgn"
+        )
+        .then(
+          (response) => {
+            console.log("Email sent successfully:", response);
+            // You can also provide feedback to the user here
+          },
+          (error) => {
+            console.error("Email could not be sent:", error);
+            // Handle the error and provide feedback to the user
+          }
+        );
     }
   };
 
@@ -257,7 +286,7 @@ const ReservationHero = () => {
           </div>
           {error && (
             <p className="errorMessage">
-              The details entered are incorrect! <br />
+              Some details you've entered are incorrect! <br />
               Please check again!
             </p>
           )}

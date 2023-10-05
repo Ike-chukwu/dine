@@ -114,7 +114,7 @@ const Checkout = () => {
               placeholder={details[3].placeholder}
               type={details[3].type}
               readOnly="true"
-              // value={inputDetails.lastName}
+              value={user.email}
               // onChange={inputChangeHandler}
               className="focusedInput"
               pClassName="c-input-pack"
@@ -147,7 +147,7 @@ const Checkout = () => {
             </div>
             <div className="good-subtitle">
               <span>tax</span>
-              <span>${(((3 / 100) * totalPrice)).toFixed(2)}</span>
+              <span>${((3 / 100) * totalPrice).toFixed(2)}</span>
             </div>
             <div className="good-subtitle">
               <span>total</span>
@@ -165,7 +165,7 @@ const Checkout = () => {
                   <img src={item.image} alt="" />
                   <div className="food-details-in-checkout">
                     <p className="food-name">{item.name}</p>
-                    <span>price:{item.price}</span>
+                    <span>price:${item.price}.00</span>
                   </div>
                 </div>
               ))}

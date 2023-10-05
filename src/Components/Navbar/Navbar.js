@@ -8,10 +8,16 @@ import { AuthContext } from "../../context";
 export const Navbar = (props) => {
   const [touched, setTouched] = useState(false);
   const [isSearchBarActive, setSearchbar] = useState(false);
-  const { searchedFood, setSearchedFood } = useContext(AuthContext);
+  const {
+    searchedFood,
+    setSearchedFood,
+    cartItems,
+    logOut,
+    user,
+    setCartItems,
+  } = useContext(AuthContext);
   const [foodResult, setFoodResult] = useState(null);
   const inputRef = useRef();
-  const { cartItems, logOut, user } = useContext(AuthContext);
 
   //variable that stores the total number of foods a user has in his cart
   const totalAmountofGoods = cartItems.reduce((totalAmount, item) => {
@@ -56,7 +62,9 @@ export const Navbar = (props) => {
   //function that handles sign out
 
   const handleSignOut = async () => {
+    setCartItems([])
     try {
+      localStorage.removeItem("cart");
       await logOut();
     } catch (error) {
       console.log(error);
