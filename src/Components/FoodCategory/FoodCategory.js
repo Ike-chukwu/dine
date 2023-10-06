@@ -6,6 +6,7 @@ import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
+import {loadStripe} from "@stripe/stripe-js"
 
 const FoodCategory = () => {
   //state that stores current rendered category
@@ -18,9 +19,11 @@ const FoodCategory = () => {
   const [categoryErrorMessage, setCategoryErrorMessage] = useState(null);
   const [foodInCategoryErrorMessage, setFoodInCategoryErrorMessage] =
     useState(null);
-
+  
   let btns;
   let foods;
+
+
 
   //fetch all meal categories
   const fetchCategory = async () => {
@@ -41,6 +44,7 @@ const FoodCategory = () => {
     }
   };
 
+  //fetch all meals under the selected category
   const fetchFoodInCategory = async (food) => {
     try {
       const foodData = await fetch(

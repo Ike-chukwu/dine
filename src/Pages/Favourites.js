@@ -17,27 +17,33 @@ const Favourites = (props) => {
   const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
-    const user = auth.currentUser;
-    if (user) {
-      const userId = user.uid;
-      const docRef = doc(db, "users", userId);
-      getDoc(docRef)
-        .then((docSnapshot) => {
-          if (docSnapshot.exists()) {
-            const userData = docSnapshot.data();
-            if (userData.likes) {
-              setFbFavs(userData.likes);
-              setLoading(false);
-            } else {
-              setLoading(false);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        const userId = user.uid;
+        const docRef = doc(db, "users", userId);
+
+        getDoc(docRef)
+          .then((docSnapshot) => {
+            if (docSnapshot.exists()) {
+              const userData = docSnapshot.data();
+              if (userData.likes) {
+                setFbFavs(userData.likes);
+              }
             }
-          }
-        })
-        .catch((error) => {
-          setLoading(false);
-          setErrorMessage(error.message);
-        });
-    }
+            setLoading(false);
+          })
+          .catch((error) => {
+            setLoading(false);
+            setErrorMessage(error.message);
+          });
+      } else {
+        // Handle the case where the user is not authenticated (e.g., redirect or show login UI).
+        setLoading(false);
+      }
+    });
+
+    // Don't forget to unsubscribe when the component unmounts.
+    return () => unsubscribe();
   }, []);
 
   if (loading) return <Loader />;
