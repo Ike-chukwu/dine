@@ -25,7 +25,11 @@ export const AuthProvider = ({ children }) => {
     if (isFoodInCart) {
       const newArray = cartItems.map((item) => {
         if (item.id == addedFood.id) {
-          return { ...item, amount: addedFood.amount };
+          return {
+            ...item,
+            amount: addedFood.amount,
+            rating: addedFood.rating,
+          };
         }
         return item;
       });
@@ -33,6 +37,7 @@ export const AuthProvider = ({ children }) => {
       return;
     }
     setCartItems([...cartItems, { ...addedFood, amount: addedFood.amount }]);
+    console.log(cartItems);
   };
 
   //function that remove food from cart
@@ -86,7 +91,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("User", currentUser);
     });
     return () => {
       unsubscribe();
@@ -113,7 +117,7 @@ export const AuthProvider = ({ children }) => {
         user,
         favs,
         addToFavs,
-        setCartItems
+        setCartItems,
       }}
     >
       {children}

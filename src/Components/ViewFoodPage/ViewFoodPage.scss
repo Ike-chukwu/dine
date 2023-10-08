@@ -12,28 +12,31 @@
 
   .product-details {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    // flex-direction: column;
     margin-top: 4rem;
     gap: 2rem;
     .left-product-side {
-      width: 100%;
-      height: 800px;
+      width: 48%;
       img {
         width: 100%;
-        aspect-ratio: 2/1;
         object-fit: cover;
       }
     }
     .right-food-side {
-      padding-bottom: 5rem;
+      width: 48%;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
       .product-name {
         font-size: 4rem;
       }
 
       .product-category {
-        margin-top: 2rem;
+        // margin-top: 2rem;
         display: flex;
-        gap: 2rem;
+        justify-content: space-between;
         align-items: center;
         .category {
           display: block;
@@ -53,10 +56,13 @@
       }
       .btns {
         display: flex;
-        gap: 2rem;
-        margin-top: 2rem;
-        align-items: center;
-
+        gap: 4rem;
+        // margin-top: 2rem;
+        flex-direction: column;
+        .btn-inner{
+          display: flex;
+         justify-content: space-between;
+        }
         .product-amount {
           display: flex;
           align-items: center;
@@ -80,7 +86,6 @@
 
         .add-btn {
           background: black;
-
           &:hover {
             border: 0.2rem solid black;
             background: none;

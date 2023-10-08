@@ -30,6 +30,12 @@ const ViewFoodPage = () => {
   const [itemAmount, setItemAmount] = useState(1);
   const [isInFav, setIsInFav] = useState(false);
 
+  //genearting an array that has a lenth between 1 and 5
+  const randomLength = Math.floor(Math.random() * 5) + 1; // Random length between 1 and 5
+  const initialArray = Array(randomLength).fill(null); // Create an array of the random length
+  const [rating, setRating] = useState(initialArray);
+
+  console.log(rating);
   const {
     clearCart,
     removeFromCartHandler,
@@ -209,33 +215,44 @@ const ViewFoodPage = () => {
               <span className="category-name">
                 {currentFood[0].strTags
                   ? currentFood[0].strTags
-                  : "No main ingredients"}
+                  : "No main ingredient"}
+              </span>
+            </div>
+            <div className="product-category">
+              <span className="category">Rating:</span>
+              <span className="category-name">
+                {rating.map((start) => (
+                  <span>⭐</span>
+                ))}
               </span>
             </div>
             <div className="btns">
-              <div className="product-amount">
-                <div className="subtract" onClick={decreaseAmount}>
-                  -
+              <div className="btn-inner">
+                <div className="product-amount">
+                  <div className="subtract" onClick={decreaseAmount}>
+                    -
+                  </div>
+                  <div className="amount">{itemAmount}</div>
+                  <div className="add" onClick={increaseAmount}>
+                    +
+                  </div>
                 </div>
-                <div className="amount">{itemAmount}</div>
-                <div className="add" onClick={increaseAmount}>
-                  +
-                </div>
+                <button
+                  className="add-btn "
+                  onClick={() =>
+                    addToCartHandler({
+                      id: id,
+                      name: currentFood[0].strMeal,
+                      price: currentFood[0].idMeal.slice(-2),
+                      amount: itemAmount,
+                      image: currentFood[0].strMealThumb,
+                      rating,
+                    })
+                  }
+                >
+                  add to cart <i className="fas fa-shopping-cart"></i>
+                </button>
               </div>
-              <button
-                className="add-btn "
-                onClick={() =>
-                  addToCartHandler({
-                    id: id,
-                    name: currentFood[0].strMeal,
-                    price: currentFood[0].idMeal.slice(-2),
-                    amount: itemAmount,
-                    image: currentFood[0].strMealThumb,
-                  })
-                }
-              >
-                add to cart <i className="fas fa-shopping-cart"></i>
-              </button>
               {isInFav ? (
                 <button
                   className="add-btn wishlist"
@@ -246,6 +263,7 @@ const ViewFoodPage = () => {
                       price: currentFood[0].idMeal.slice(-2),
                       amount: itemAmount,
                       image: currentFood[0].strMealThumb,
+                      
                     })
                   }
                 >

@@ -25,6 +25,26 @@ const Checkout = () => {
     });
   };
 
+  const checkout = async (e) => {
+    e.preventDefault()
+    await fetch("http://localhost:4000/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ items: cartItems }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        if (response.url) {
+          window.location.assign(response.url);
+        }
+      });
+      
+  };
+
   const details = [
     {
       id: 1,
@@ -132,7 +152,9 @@ const Checkout = () => {
               pClassName="c-input-pack"
             />
           </div>
-          <button className="check-continue">continue</button>
+          <button onClick={checkout} className="check-continue">
+            continue
+          </button>
         </form>
         <div className="in-my-bag">
           <h3>in your cart</h3>

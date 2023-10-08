@@ -66,7 +66,11 @@ const Cart = (props) => {
             <div className="food-details">
               <h2 className="cart-food-name">{item.name}</h2>
               <p className="cart-food-price">${parseInt(`${item.price}`)}.00</p>
-              <p className="rating">⭐⭐⭐⭐</p>
+              <p className="rating">
+                {item.rating.map((star) => (
+                  <>⭐</>
+                ))}
+              </p>
             </div>
             <i
               className="fas fa-trash"
@@ -74,20 +78,6 @@ const Cart = (props) => {
             ></i>
           </div>
         ))}
-        {/* <div className="food-item">
-          <div className="number">
-            <span className="cart-plus">+</span>
-            <span className="cart-item-amount">1</span>
-            <span className="cart-minus">-</span>
-          </div>
-          <img src={image} alt="" className="cart-food" />
-          <div className="food-details">
-            <h2 className="cart-food-name">Spaghetti</h2>
-            <p className="cart-food-price">$40.00</p>
-            <p className="rating">⭐⭐⭐⭐</p>
-          </div>
-          <i className="fas fa-trash"></i>
-        </div> */}
         {totalPrice ? (
           <>
             <div className="total-price">

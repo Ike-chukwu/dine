@@ -1,0 +1,45 @@
+.cancel-parent {
+  display: flex;
+  justify-content: center;
+  padding-block: 12rem;
+
+  .cancel-modal {
+    background: black;
+    color: white;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    .mark {
+      font-size: 4rem;
+      color: black;
+      background: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+    }
+    .cancel-tag {
+      font-size: 4rem;
+      text-transform: capitalize;
+    }
+    .caution {
+      font-size: 2rem;
+      width: 500px;
+      line-height: 1.5;
+    }
+
+    .home-btn {
+      align-self: flex-start;
+      padding: 2rem 4rem;
+      text-transform: uppercase;
+      color: black;
+      font-size: 1.4rem;
+      background: white;
+      border: 0.1rem rem solid white;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}
