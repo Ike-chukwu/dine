@@ -39,27 +39,6 @@
         display: flex;
         flex-direction: column;
         gap: 3rem;
-
-        // .error {
-        //   display: none;
-        // }
-
-        // input[focused="true"] ~ .error{
-        //   margin: 0;
-        //  display: unset;
-        // }
-        // .fullDetails {
-        //   font-size: 2rem;
-        //   padding-bottom: 1rem;
-        //   border: none;
-        //   outline: none;
-        //   border-bottom: 0.2rem solid #c6c6c6;
-        //   width: 100%;
-
-        //   // &[focused="true"] {
-        //   //   border-bottom: 0.2rem solid red;
-        //   // }
-        // }
       }
 
       .reservation-date {
@@ -101,13 +80,6 @@
             display: flex;
             gap: 1.5rem;
           }
-          // input {
-          //   width: 80px;
-          //   padding-bottom: 1rem;
-          //   border: none;
-          //   outline: none;
-          //   border-bottom: 0.1rem solid #c6c6c6;
-          // }
 
           .selection {
             width: 80px;
@@ -146,6 +118,7 @@
         text-transform: uppercase;
         color: white;
         cursor: pointer;
+        white-space: nowrap;
 
         &:hover {
           border: 0.1rem solid black;
@@ -158,6 +131,172 @@
         font-size: 2rem;
         color: red;
         font-weight: bold;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1050px) {
+  .reservation-parent {
+    background: url(../../assets/images/homepage/ready-bg-tablet.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .reservation-container {
+      padding-top: 8rem;
+      flex-direction: column;
+      align-items: center;
+
+      .left-reservation {
+        text-align: center;
+        .reservation-title {
+          font-size: 3.5rem;
+        }
+        .reservation-testContent {
+          font-size: 1.6rem;
+          margin-block: 3rem;
+        }
+      }
+
+      .reservation-form {
+        position: unset;
+      }
+    }
+  }
+}
+
+@media (max-width: 590px) {
+  .reservation-parent {
+    .reservation-container {
+      .left-reservation {
+        .reservation-testContent {
+          width: 100%;
+          margin-block: 3rem;
+        }
+      }
+      .reservation-form {
+        padding: 3rem;
+        width: 400px;
+        .reservation-date {
+          flex-direction: column;
+          gap: 3rem;
+          .duration-title {
+            align-self: flex-start;
+          }
+          .date-in-numbers {
+            width: 100%;
+
+            .duration {
+              width: 29%;
+              text-align: center;
+              font-size: 1.6rem;
+            }
+          }
+        }
+        .reservation-timee {
+          flex-direction: column;
+          gap: 3rem;
+          .duration-title {
+            align-self: flex-start;
+          }
+          .date-in-numbers {
+            width: 100%;
+            .time {
+              width: 70%;
+              gap: 2rem;
+              .duration {
+                width: 100px;
+                text-align: center;
+                font-size: 1.6rem;
+              }
+            }
+            .selection {
+              width: 29%;
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .reservation-parent {
+    .reservation-container {
+      .reservation-form {
+        width: 300px;
+        .fullDetails {
+          font-size: 1.4rem;
+        }
+        .reservation-date {
+          .duration-title {
+            width: 100%;
+            font-size: 1.4rem;
+          }
+          .date-in-numbers {
+            width: 100%;
+            .duration {
+              font-size: 1.4rem;
+            }
+          }
+        }
+        .reservation-timee {
+          flex-direction: column;
+          .duration-title {
+            width: 100%;
+            font-size: 1.4rem;
+          }
+          .date-in-numbers {
+            width: 100%;
+            .time {
+              gap: 1.4rem;
+              .duration {
+                width: 70px;
+                font-size: 1.4rem;
+              }
+            }
+            .selection {
+              font-size: 1.4rem;
+            }
+          }
+        }
+        .no-of-people {
+          .minus {
+            font-size: 1.8rem;
+          }
+          .plus {
+            font-size: 1.8rem;
+          }
+          .amount-of-people {
+            font-size: 1.4rem;
+          }
+        }
+        .reservation-booking-btn {
+          padding-block: 2rem;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 280px) {
+  .reservation-parent {
+    .reservation-container {
+      .reservation-form {
+        width: 250px;
+        .reservation-timee {
+          .date-in-numbers {
+            .time {
+              gap: 0.7rem;
+              .duration {
+                width: 60px;
+              }
+            }
+          }
+        }
       }
     }
   }

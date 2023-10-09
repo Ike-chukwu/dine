@@ -23,8 +23,11 @@
     .right-content-highlight {
       width: 50%;
       .right-container-parent {
-        border-bottom: .1rem solid white;
+        border-bottom: 0.1rem solid white;
         margin-bottom: 2rem;
+        &:last-of-type {
+          border-bottom: unset;
+        }
         .food-box {
           padding-inline: 3rem;
           display: flex;
@@ -55,6 +58,21 @@
               line-height: 1.5;
               margin-top: 1.5rem;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1490px) {
+  .highlights-parent {
+    .highlights {
+      .right-content-highlight {
+        .right-container-parent {
+          .food-box {
+            padding-inline: 2rem;
+            gap: 7rem;
           }
         }
       }

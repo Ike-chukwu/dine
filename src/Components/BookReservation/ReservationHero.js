@@ -210,8 +210,6 @@ const ReservationHero = () => {
                 </>
               );
             })}
-            {/* <input type="text" className="fullDetails" placeholder="Name" />
-            <input type="text" className="fullDetails" placeholder="Email" /> */}
           </div>
           <div className="reservation-date">
             <h3 className="duration-title">Pick a date</h3>
@@ -227,9 +225,6 @@ const ReservationHero = () => {
                   />
                 );
               })}
-              {/* <input type="number" maxLength={2} />
-              <input type="text" maxLength={2} />
-              <input type="text" maxLength={4} /> */}
             </div>
           </div>
           <div className="reservation-timee">
@@ -247,8 +242,6 @@ const ReservationHero = () => {
                     />
                   );
                 })}
-                {/* <input type="text" maxLength={2} />
-                <input type="text" maxLength={2} /> */}
               </div>
               <select
                 name=""
@@ -261,8 +254,6 @@ const ReservationHero = () => {
                     {item.value}
                   </option>
                 ))}
-
-                {/* <option value="PM">PM</option> */}
               </select>
             </div>
           </div>
@@ -275,7 +266,11 @@ const ReservationHero = () => {
             >
               -
             </span>
-            <span className="amount-of-people">{noOfPeople} of people</span>
+            <span className="amount-of-people">
+              {noOfPeople == 1
+                ? `${noOfPeople} person`
+                : `${noOfPeople} people`}
+            </span>
             <span
               className="plus"
               onClick={increament}

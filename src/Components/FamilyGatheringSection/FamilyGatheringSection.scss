@@ -21,12 +21,12 @@
       width: 100%;
       position: absolute;
       left: 0;
-      box-shadow: 0 7.5rem 10rem -5rem rgba(56, 66, 85, 0.5) ;
+      box-shadow: 0 7.5rem 10rem -5rem rgba(56, 66, 85, 0.5);
     }
-    .svg{
-        position: absolute;
-        right: -10%;
-        top: 74%;
+    .svg {
+      position: absolute;
+      right: -10%;
+      top: 74%;
     }
   }
   .right-family-gathering {
@@ -57,9 +57,29 @@
         letter-spacing: 0.4rem;
         font-weight: lighter;
 
-        &.active{
+        &.active {
           font-weight: 700;
         }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1490px) {
+  .family-gathering {
+    .left-family-gathering {
+      .lines {
+        left: -10%;
+        z-index: 2;
+      }
+      .main-picture {
+        width: unset;
+      }
+      .svg {
+        position: absolute;
+        right: -50%;
+        z-index: -1;
       }
     }
   }

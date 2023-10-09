@@ -2,16 +2,29 @@
   background: url(../../assets/images/homepage/ready-bg-desktop@2x.jpg);
   .section-banner {
     display: flex;
-    // flex-direction: column;
     color: white;
     gap: 45rem;
     align-items: center;
 
-    h1{
-        font-size: 4rem;
+    h1 {
+      font-size: 4rem;
     }
-    button{
-        padding-inline: 6rem;
+    button {
+      padding-inline: 6rem;
+    }
+  }
+}
+
+
+@media (max-width: 1490px) {
+  .section-banner-parent {
+    .section-banner {
+      justify-content: space-between;
+
+      button {
+        padding-inline: 4rem;
+        white-space: nowrap;
+      }
     }
   }
 }

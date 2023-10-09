@@ -5,7 +5,7 @@ import logo from "../../assets/images/logo.svg";
 const Footer = () => {
   return (
     <div className="footer-parent">
-      <section className="footer">
+      <section className="footer" >
         <img src={logo} alt="" />
         <div className="right-footer-content">
           <div className="first-footer-content">

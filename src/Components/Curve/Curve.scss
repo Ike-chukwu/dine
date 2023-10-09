@@ -1,10 +1,21 @@
-.parent-curve{
-    position: relative;
+.parent-curve {
+  position: relative;
 
-    .lines{
-        position: absolute;
-        top: 25%;
-        // z-index: 150;
-        left: 40%;
+  .lines {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+  }
+}
+
+
+
+@media (max-width: 1050px) {
+  .parent-curve {
+    padding-block: 22rem;
+    .curve-img,
+    .lines {
+      display: none;
     }
+  }
 }

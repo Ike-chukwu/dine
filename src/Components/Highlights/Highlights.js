@@ -6,6 +6,7 @@ import beef from "../../assets/images/homepage/beef-desktop-tablet.jpg";
 import chocolate from "../../assets/images/homepage/chocolate-desktop-tablet.jpg";
 
 const Highlights = () => {
+  
   return (
     <div className="highlights-parent">
       <section className="highlights">

@@ -1,6 +1,6 @@
 .local-food {
   padding-top: 50rem;
-//   padding-bottom: 20rem;
+  //   padding-bottom: 20rem;
   display: flex;
   align-items: center;
   position: relative;
@@ -24,17 +24,44 @@
     position: absolute;
     right: 20%;
     top: 30%;
-    &::after{
-        position: absolute;
-        content: url(../../assets/images/patterns/pattern-curve-top-left.svg);
-        right:-100%;
-        bottom: 12%;
-        z-index: -2;
+    &::after {
+      position: absolute;
+      content: url(../../assets/images/patterns/pattern-curve-top-left.svg);
+      right: -100%;
+      bottom: 12%;
+      z-index: -2;
     }
-    .right-local-food-img{
+    .right-local-food-img {
+      position: absolute;
+      right: -15%;
+      top: 25%;
+    }
+  }
+}
+
+
+@media (max-width: 1490px) {
+  .local-food {
+    padding-top: 27rem;
+    .content-local-food {
+      padding-bottom: 0rem;
+    }
+
+    .right-food-content {
+      right: 8%;
+      top: 25%;
+      &::after {
+        right: -100%;
+        bottom: 17%;
+      }
+      .right-local-food-img {
         position: absolute;
         right: -15%;
         top: 25%;
+      }
+      .foodImg{
+        width: 400px;
+      }
     }
   }
 }

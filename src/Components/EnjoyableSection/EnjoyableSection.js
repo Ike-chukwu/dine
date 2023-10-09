@@ -8,6 +8,7 @@ const EnjoyableSection = () => {
   return (
     <section className="enjoyable">
       <img src={hills} alt="" className="left-image" />
+      <img src={hills} alt="" className="left-image-tablet" />
       <div className="right-content">
         <img src={svgIcon} alt="" />
         <h2 className="enjoyable-title">

@@ -1,32 +1,72 @@
-.enjoyable{
-    display: flex;
-    align-items: center;
+.enjoyable {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: url(../../assets/images/patterns/pattern-curve-top-right.svg);
+    left: -16%;
+    width: 500px;
+    top: 50%;
+  }
+
+  .left-image {
+    position: absolute;
+    top: -20%;
+  }
+
+  .left-image-tablet {
+    display: none;
+  }
+
+  .right-content {
     position: relative;
-
-    &::after{
-        position: absolute;
-        content: url(../../assets/images/patterns/pattern-curve-top-right.svg);
-        left:-16%;
-        width: 500px;
-        top: 50%;
+    left: 43%;
+    h2 {
+      font-size: 4rem;
+      margin-block: 4rem;
     }
 
-    .left-image{
-        position: absolute;
-        top: -20%;
+    p {
+      font-size: 2rem;
+      width: 400px;
+      line-height: 1.5;
+    }
+  }
+}
+
+
+@media (max-width: 1490px) {
+  .enjoyable {
+    &::after {
+      left: -23%;
+      top: 25%;
     }
 
-    .right-content{
-        position: relative;
-        left:43%;
-        h2{
-            font-size: 4rem;
-            margin-block: 4rem;
-        }
-
-        p{font-size: 2rem;
-            width: 400px;
-            line-height: 1.5;
-        }
+    .left-image {
+      display: none;
     }
+
+    .left-image-tablet {
+      display: unset;
+      position: absolute;
+      width: 400px;
+    }
+
+    .right-content {
+      position: relative;
+      left: 52%;
+      h2 {
+        font-size: 4rem;
+        margin-block: 4rem;
+      }
+
+      p {
+        font-size: 2rem;
+        width: 400px;
+        line-height: 1.5;
+      }
+    }
+  }
 }
