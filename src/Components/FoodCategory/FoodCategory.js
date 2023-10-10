@@ -32,6 +32,7 @@ const FoodCategory = () => {
       const listOfCategories = result.categories;
       setData(listOfCategories);
       setCategory(listOfCategories[0].strCategory);
+      
       fetchFoodInCategory(listOfCategories[0].strCategory);
       setCategoryLoadingState(false);
     } catch (error) {

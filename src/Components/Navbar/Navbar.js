@@ -62,7 +62,7 @@ export const Navbar = (props) => {
   //function that handles sign out
 
   const handleSignOut = async () => {
-    setCartItems([])
+    setCartItems([]);
     try {
       localStorage.removeItem("cart");
       await logOut();
@@ -143,10 +143,17 @@ export const Navbar = (props) => {
             }}
           >
             <div className="searchContent">
-              <Link to="/">
-                <img src={logo} alt="" className="logo" />
+              <Link to="/" className="logo">
+                <img src={logo} alt="" />
               </Link>
               <div className="main-search">
+                <input
+                  type="text"
+                  onChange={(e) => foodInput(e)}
+                  ref={inputRef}
+                  value={searchedFood}
+                  onClick={(e) => e.stopPropagation()}
+                />
                 <i
                   className="fas fa-search"
                   onClick={(e) => {
@@ -156,13 +163,6 @@ export const Navbar = (props) => {
                     setFoodResult([]);
                   }}
                 ></i>
-                <input
-                  type="text"
-                  onChange={(e) => foodInput(e)}
-                  ref={inputRef}
-                  value={searchedFood}
-                  onClick={(e) => e.stopPropagation()}
-                />
                 <ul className="searched-results">
                   {foodResult?.map((result) => (
                     <li

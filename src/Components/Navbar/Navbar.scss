@@ -100,13 +100,14 @@
           position: relative;
 
           i {
-            padding-left: 1rem;
+            margin-right: 1rem;
           }
           input {
             height: 100%;
             width: 95%;
             border: none;
             outline: none;
+            padding-left: 1rem;
           }
           &.clicked {
             transform: scaleY(1);
@@ -154,6 +155,48 @@
   .nav-parent {
     .nav {
       width: 1000px;
+      .searchGroup {
+        .searchContent {
+          width: 1000px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  .nav-parent {
+    .nav {
+      width: 100%;
+      padding-inline: 3rem;
+      .searchGroup {
+        .searchContent {
+          width: 100%;
+          padding-inline: 3rem;
+          .fa-close {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 590px) {
+  .nav-parent {
+    .nav {
+      .searchGroup {
+        .searchContent {
+          .main-search {
+            width: 85%;
+            height: 30px;
+          }
+
+          .logo {
+            display: none;
+          }
+        }
+      }
     }
   }
 }
