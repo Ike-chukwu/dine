@@ -8,6 +8,7 @@
     justify-content: space-between;
     position: relative;
     align-items: center;
+    position: relative;
 
     .logo {
       width: 80px;
@@ -57,6 +58,10 @@
           border-radius: 50%;
           font-size: 1.6rem;
         }
+      }
+
+      .menu-bar-icon {
+        display: none;
       }
     }
 
@@ -164,17 +169,94 @@
   }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1060px) {
   .nav-parent {
     .nav {
       width: 100%;
-      padding-inline: 3rem;
+      padding-inline: 2rem;
+      padding-block: 2.5rem;
+
+      .logo {
+        width: 60px;
+      }
+
+      .middle {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        display: flex;
+        align-items: center;
+        z-index: 300;
+        gap: 4rem;
+        flex-direction: column;
+        justify-content: center;
+        transition: 1s ease-out;
+        &.opened {
+          top: 0%;
+        }
+        .nav-wrapper {
+          height: 40px;
+          // background: red;
+          position: relative;
+          overflow: hidden;
+          .nav-link {
+            color: black;
+            font-size: 3rem;
+            // font-weight: bold;
+            cursor: pointer;
+            transition: all 3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(40px);
+            &.show {
+              transform: translateY(0);
+            }
+          }
+        }
+      }
+
       .searchGroup {
         .searchContent {
           width: 100%;
           padding-inline: 3rem;
           .fa-close {
             font-size: 2rem;
+          }
+        }
+      }
+      .icons {
+        .menu-bar-icon {
+          display: unset;
+          width: 28px;
+          height: 16px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          z-index: 500;
+          cursor: pointer;
+          .burger-line {
+            background: white;
+            width: 100%;
+            height: 2px;
+            transition: 1s;
+            transform-origin: left center;
+            &:first-of-type {
+              &.open {
+                transform: rotate(45deg) translate3d(-2px, 0, 0);
+              }
+            }
+            &:nth-of-type(2) {
+              width: 14px;
+              &.open {
+                display: none;
+              }
+            }
+            &:last-of-type {
+              &.open {
+                transform: rotate(-45deg) translate3d(-4px, 0, 0);
+              }
+            }
           }
         }
       }
@@ -185,6 +267,13 @@
 @media (max-width: 590px) {
   .nav-parent {
     .nav {
+      .middle {
+        .nav-wrapper {
+          .nav-link {
+            font-size: 2rem;
+          }
+        }
+      }
       .searchGroup {
         .searchContent {
           .main-search {

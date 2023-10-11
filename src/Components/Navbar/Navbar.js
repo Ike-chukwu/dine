@@ -18,6 +18,7 @@ export const Navbar = (props) => {
   } = useContext(AuthContext);
   const [foodResult, setFoodResult] = useState(null);
   const inputRef = useRef();
+  const [isMenuActive, setMenuActive] = useState(false);
 
   //variable that stores the total number of foods a user has in his cart
   const totalAmountofGoods = cartItems.reduce((totalAmount, item) => {
@@ -78,6 +79,18 @@ export const Navbar = (props) => {
     }
   }, [touched]);
 
+  useEffect(() => {
+    const html = document.querySelector("html");
+
+    if (html) {
+      if (isMenuActive) {
+        html.style.overflow = "hidden";
+      } else {
+        html.style.overflow = "auto";
+      }
+    }
+  }, [isMenuActive]);
+
   return (
     <div className="nav-parent">
       <div className="nav">
@@ -85,38 +98,81 @@ export const Navbar = (props) => {
           <img src={logo} alt="" className="logo" />
         </Link>
 
-        <div className="middle">
+        <div className={isMenuActive ? "middle opened" : "middle"}>
           <div className="nav-wrapper">
-            <Link className="nav-link" to="/">
+            <Link
+              className={isMenuActive ? "nav-link show" : "nav-link"}
+              to="/"
+              style={{
+                display: "block",
+                transitionDelay: isMenuActive ? "1.2s" : "0s",
+              }}
+            >
               home
             </Link>
           </div>
           <div className="nav-wrapper">
-            <Link className="nav-link" to="/about">
+            <Link
+              className={isMenuActive ? "nav-link show" : "nav-link"}
+              to="/about"
+              style={{
+                display: "block",
+                transitionDelay: isMenuActive ? "1.4s" : "0s",
+              }}
+            >
               about
             </Link>
           </div>
           <div className="nav-wrapper">
-            <Link className="nav-link" to="/menu">
+            <Link
+              className={isMenuActive ? "nav-link show" : "nav-link"}
+              to="/menu"
+              style={{
+                display: "block",
+                transitionDelay: isMenuActive ? "1.6s" : "0s",
+              }}
+            >
               menu
             </Link>
           </div>
           {user && (
             <div className="nav-wrapper">
-              <Link className="nav-link" to="/favourites">
+              <Link
+                className={isMenuActive ? "nav-link show" : "nav-link"}
+                to="/favourites"
+                style={{
+                  display: "block",
+                  transitionDelay: isMenuActive ? "1.8s" : "0",
+                }}
+              >
                 favourites
               </Link>
             </div>
           )}
           {user?.displayName ? (
             <div className="nav-wrapper">
-              <Link className="nav-link" to="/signIn" onClick={handleSignOut}>
+              <Link
+                className={isMenuActive ? "nav-link show" : "nav-link"}
+                to="/signIn"
+                onClick={handleSignOut}
+                style={{
+                  display: "block",
+                  transitionDelay: isMenuActive ? "2.0s" : "0",
+                }}
+              >
                 sign out
               </Link>
             </div>
           ) : (
             <div className="nav-wrapper">
-              <Link className="nav-link" to="/signIn">
+              <Link
+                className={isMenuActive ? "nav-link show" : "nav-link"}
+                to="/signIn"
+                style={{
+                  display: "block",
+                  transitionDelay: isMenuActive ? "2.2s" : "0s",
+                }}
+              >
                 sign-in/registration
               </Link>
             </div>
@@ -197,7 +253,23 @@ export const Navbar = (props) => {
               onClick={() => props.setCartActive(!props.isCartActive)}
             ></i>
           </div>
-          <div className="menu-bar-icon"></div>
+          <div
+            className="menu-bar-icon"
+            onClick={() => setMenuActive(!isMenuActive)}
+          >
+            <div
+              style={{ background: isMenuActive ? "black" : "white" }}
+              className={isMenuActive ? "burger-line open" : "burger-line"}
+            ></div>
+            <div
+              style={{ background: isMenuActive ? "black" : "white" }}
+              className={isMenuActive ? "burger-line open" : "burger-line"}
+            ></div>
+            <div
+              style={{ background: isMenuActive ? "black" : "white" }}
+              className={isMenuActive ? "burger-line open" : "burger-line"}
+            ></div>
+          </div>
         </div>
       </div>
     </div>

@@ -28,9 +28,9 @@ section {
 }
 
 
-@media (max-width: 1050px) {
+@media (max-width: 1060px) {
     section {
         width: 100%;
-        padding-inline: 3rem;
+        padding-inline: 2rem;
     }
 }

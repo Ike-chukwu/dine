@@ -36,14 +36,19 @@
   }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1060px) {
   .footer-parent {
     .footer {
-      align-items: flex-start;
+      justify-content: center;
+      gap: 6rem;
+      img {
+        width: 60px;
+      }
       .right-footer-content {
         flex-direction: column;
         align-items: flex-start;
         gap: 5rem;
+        width: unset;
       }
     }
   }
@@ -66,4 +71,3 @@
     }
   }
 }
-

@@ -3,6 +3,7 @@ import "./LocalFood.scss";
 import lines from "../../assets/images/patterns/pattern-lines.svg";
 import food from "../../assets/images/homepage/locally-sourced-desktop.jpg";
 import foodTablet from "../../assets/images/homepage/locally-sourced-tablet.jpg";
+import foodPhone from "../../assets/images/homepage/locally-sourced-mobile.jpg";
 import svgIcon from "../../assets/images/patterns/pattern-divide.svg";
 
 const LocalFood = () => {
@@ -22,7 +23,8 @@ const LocalFood = () => {
       <div className="right-food-content">
         <img src={lines} alt="" className="right-local-food-img" />
         <img src={food} alt="" className="foodImg" />
-        {/* <img src={foodTablet} alt="" className="foodImgTablet" /> */}
+        <img src={foodTablet} alt="" className="foodImgTablet" />
+        <img src={foodPhone} alt="" className="foodImgPhone" />
       </div>
     </section>
   );

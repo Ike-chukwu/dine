@@ -4,6 +4,9 @@ import svgIcon from "../../assets/images/patterns/pattern-divide.svg";
 import salmon from "../../assets/images/homepage/salmon-desktop-tablet.jpg";
 import beef from "../../assets/images/homepage/beef-desktop-tablet.jpg";
 import chocolate from "../../assets/images/homepage/chocolate-desktop-tablet.jpg";
+import salmonM from "../../assets/images/homepage/salmon-mobile.jpg";
+import beefM from "../../assets/images/homepage/beef-mobile.jpg";
+import chocolateM from "../../assets/images/homepage/chocolate-mobile.jpg";
 
 const Highlights = () => {
   
@@ -25,6 +28,7 @@ const Highlights = () => {
             <div className="food-box">
               <div className="left">
                 <img src={salmon} className="food-img" alt="" />
+                <img src={salmonM} className="food-img-mobile" alt="" />
                 <img src={svgIcon} className="s-icon" alt="" />
               </div>
               <div className="right">
@@ -40,6 +44,7 @@ const Highlights = () => {
             <div className="food-box">
               <div className="left">
                 <img src={beef} className="food-img" alt="" />
+                <img src={beefM} className="food-img-mobile" alt="" />
                 <img src={svgIcon} className="s-icon" alt="" />
               </div>
               <div className="right">
@@ -55,6 +60,7 @@ const Highlights = () => {
             <div className="food-box">
               <div className="left">
                 <img src={chocolate} className="food-img" alt="" />
+                <img src={chocolateM} className="food-img-mobile" alt="" />
                 <img src={svgIcon} className="s-icon" alt="" />
               </div>
               <div className="right">
