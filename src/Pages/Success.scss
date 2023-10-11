@@ -43,3 +43,47 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .success-wrapper {
+    .success-container {
+      .checkmark-div {
+        width: 100px;
+        height: 100px;
+      }
+      .greeting {
+        font-size: 1.6rem;
+      }
+
+      .big-text {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .success-wrapper {
+    height: 100vh;
+    overflow-y: hidden;
+    &::after {
+      display: none;
+    }
+    .success-container {
+      gap: 2.5rem;
+      .checkmark-div {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.8rem;
+      }
+      .greeting {
+        font-size: 1.6rem;
+      }
+
+      .big-text {
+        font-size: 2rem;
+      }
+    }
+  }
+}

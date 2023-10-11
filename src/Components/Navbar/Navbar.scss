@@ -176,7 +176,7 @@
       padding-inline: 2rem;
       padding-block: 2.5rem;
 
-      .logo {
+      .img {
         width: 60px;
       }
 
@@ -217,11 +217,18 @@
       }
 
       .searchGroup {
+        z-index: 600;
+        padding-top: 2.5rem;
         .searchContent {
           width: 100%;
-          padding-inline: 3rem;
+          padding-inline: 2rem;
           .fa-close {
             font-size: 2rem;
+          }
+          .logo {
+            img {
+              width: 60px;
+            }
           }
         }
       }

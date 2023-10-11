@@ -210,15 +210,7 @@ export const Navbar = (props) => {
                   value={searchedFood}
                   onClick={(e) => e.stopPropagation()}
                 />
-                <i
-                  className="fas fa-search"
-                  onClick={(e) => {
-                    setSearchbar(false);
-                    setTouched(false);
-                    setSearchedFood("");
-                    setFoodResult([]);
-                  }}
-                ></i>
+
                 <ul className="searched-results">
                   {foodResult?.map((result) => (
                     <li
