@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     const isFoodInCart = cartItems.some((food) => food.id == addedFood.id);
     if (isFoodInCart) {
       const newArray = cartItems.map((item) => {
-        if (item.id == addedFood.id) {
+        if (item.id === addedFood.id) {
           return {
             ...item,
             amount: addedFood.amount,

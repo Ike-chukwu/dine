@@ -26,8 +26,8 @@ const Checkout = () => {
   };
 
   const checkout = async (e) => {
-    e.preventDefault()
-    await fetch("http://localhost:4000/checkout", {
+    e.preventDefault();
+    await fetch("http://localhost:5000/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,6 @@ const Checkout = () => {
           window.location.assign(response.url);
         }
       });
-      
   };
 
   const details = [
