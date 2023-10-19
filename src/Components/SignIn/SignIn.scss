@@ -41,3 +41,26 @@
     }
   }
 }
+
+@media (max-width: 1060px) {
+  .parent-sign-in {
+    .sign-in-page {
+      gap: 3rem;
+
+      .sign-in-logo-image {
+        width: 60px;
+        margin-inline: auto;
+      }
+
+      .sign-in-brief {
+        font-size: 1.6rem;
+        width: 100%;
+      }
+
+      .google-btn {
+        padding-inline: 1rem;
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

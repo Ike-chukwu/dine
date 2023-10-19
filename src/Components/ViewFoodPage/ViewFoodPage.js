@@ -35,7 +35,6 @@ const ViewFoodPage = () => {
   const initialArray = Array(randomLength).fill(null); // Create an array of the random length
   const [rating, setRating] = useState(initialArray);
 
-  console.log(rating);
   const {
     clearCart,
     removeFromCartHandler,

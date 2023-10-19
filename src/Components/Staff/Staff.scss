@@ -78,3 +78,59 @@
     }
   }
 }
+
+@media (max-width: 1490px) {
+  .team-details {
+    h1 {
+      font-size: 3rem;
+    }
+    .team-content {
+      width: 1000px;
+
+      .personal-details {
+        .card {
+          .name {
+            font-size: 2rem;
+          }
+          .socials {
+            i {
+              padding: 0.5rem;
+            }
+          }
+          .position {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1060px) {
+  .team-details {
+    .team-content {
+      width: 100%;
+      padding-inline: 2rem;
+      gap: unset;
+      justify-content: space-between;
+
+      .personal-details {
+        flex: unset;
+        width: 47%;
+        .card {
+          .name {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 875px) {
+  .team-details {
+    display: none;
+  }
+}

@@ -37,11 +37,11 @@
         font-weight: bold;
         font-size: 1.8rem;
 
-        &:hover{
-            background: none;
-            border: .2rem solid black;
-            cursor: pointer;
-            color: black;
+        &:hover {
+          background: none;
+          border: 0.2rem solid black;
+          cursor: pointer;
+          color: black;
         }
       }
     }
@@ -98,7 +98,7 @@
               display: flex;
               flex-direction: column;
               gap: 0.4rem;
-              width: 20rem;
+              // width: 20rem;
               text-align: right;
 
               .food-name {
@@ -111,6 +111,46 @@
                 font-size: 1.2rem;
                 font-weight: lighter;
                 text-transform: capitalize;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1060px) {
+  .checkout-parent {
+    .checkout-title {
+      font-size: 2.5rem;
+    }
+
+    .checkout-form-parent {
+      flex-direction: column;
+      gap: 5rem;
+
+      .checkout-form {
+        width: 100%;
+      }
+
+      .in-my-bag {
+        width: 100%;
+        .more-shipping-details {
+          .good-subtitle {
+            width: 100%;
+          }
+        }
+        .foods {
+          .food-items {
+            .food-pack {
+              width: 100%;
+              align-items: center;
+              .food-details-in-checkout {
+                width: unset;
+                span{
+                  text-align: right;
+                }
               }
             }
           }

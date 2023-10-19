@@ -1,13 +1,13 @@
 import React from "react";
 import "./RestaurantInfo.scss";
 import picture from "../../assets/images/../../assets/images/homepage/beef-mobile@2x.jpg";
+import pictureMobile from "../../assets/images/../../assets/images/homepage/chocolate-mobile.jpg";
 import food from "../../assets/images/homepage/locally-sourced-tablet.jpg";
+import foodMobile from "../../assets/images/homepage/locally-sourced-mobile.jpg";
 import Button from "../Button/Button";
 import Staff from "../Staff/Staff";
 
 export const RestaurantInfo = () => {
- 
-
   return (
     <div className="restaurant-info-parent">
       <div className="restaurant-info">
@@ -61,7 +61,7 @@ export const RestaurantInfo = () => {
           <img src={picture} alt="" />
         </div>
       </div>
-      <Staff/>
+      <Staff />
     </div>
   );
 };

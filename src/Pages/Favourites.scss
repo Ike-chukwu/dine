@@ -12,8 +12,8 @@
     padding: 4rem 0 5rem;
     flex-wrap: wrap;
     position: relative;
-    // justify-content: center;
-    .empty-state{
+    justify-content: center;
+    .empty-state {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -21,7 +21,7 @@
       font-size: 2rem;
     }
     .food-box {
-      width: 400px;
+      width: 350px;
       border: 0.2rem solid black;
       padding: 1.5rem;
       text-align: center;
@@ -47,6 +47,35 @@
           cursor: pointer;
           background: none;
           font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1060px) {
+  .favourites {
+    .fav-title {
+      font-size: 3rem;
+    }
+    .food-result {
+      .empty-state {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 790px) {
+  .favourites {
+    .food-result {
+      padding: 2rem 0 2rem;
+      width: 100%;
+      .food-box {
+        width: 100%;
+        h2 {
+          font-size: 1.6rem;
         }
       }
     }

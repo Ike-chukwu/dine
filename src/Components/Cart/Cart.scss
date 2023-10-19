@@ -7,16 +7,14 @@
   top: 11.5%;
   opacity: 0;
   right: -100%;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   min-height: 10rem;
   max-height: 90vh;
   overflow-y: scroll;
 
-
-  &.activated{
+  &.activated {
     right: 0%;
     opacity: 1;
-
   }
 
   .cart-title {
@@ -64,24 +62,23 @@
         border-radius: 0.5rem;
       }
 
-      .food-details{
+      .food-details {
         display: flex;
         gap: 0.5rem;
         flex-direction: column;
 
-        .cart-food-name{
-            font-size: 1.5rem;
-            font-weight: 200;
+        .cart-food-name {
+          font-size: 1.5rem;
+          font-weight: 200;
         }
 
-        .cart-food-price{
-            font-size: 1.4rem;
-            color: black;
-            font-weight: bold;
+        .cart-food-price {
+          font-size: 1.4rem;
+          color: black;
+          font-weight: bold;
         }
-
-    }
-    .fa-trash{
+      }
+      .fa-trash {
         position: absolute;
         right: 1rem;
         cursor: pointer;
@@ -89,41 +86,40 @@
         bottom: 1rem;
         cursor: pointer;
 
-        &:hover{
+        &:hover {
           color: red;
         }
-    }
+      }
     }
   }
 
-  .total-price{
+  .total-price {
     color: white;
     display: flex;
     justify-content: space-between;
 
-    .total-title{
+    .total-title {
       font-size: 1.6rem;
       text-transform: capitalize;
       font-weight: bold;
     }
 
-    .total-price{
+    .total-price {
       font-size: 1.6rem;
     }
   }
 
-  .checkout{
+  .checkout {
     width: 100%;
     padding: 2rem;
-    font-size:1.6rem ;
+    font-size: 1.6rem;
     background: white;
     text-align: center;
     text-transform: uppercase;
     font-weight: 700;
     cursor: pointer;
-    transition: all .3s ease-in;
+    transition: all 0.3s ease-in;
 
-    
     &:hover {
       background: none;
       border: 0.2rem solid white;
@@ -132,10 +128,34 @@
     }
   }
 
-  .empty-cart{
+  .empty-cart {
     font-size: 1.4rem;
     font-weight: 500;
     color: white;
     text-transform: uppercase;
+  }
+}
+
+@media (max-width: 1060px) {
+  .cart-parent {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 280px) {
+  .cart-parent {
+    width: 100%;
+    padding-inline: 1rem;
+
+    .food-cart-details{
+      .food-item {
+        .food-details{
+          .cart-food-name{
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
   }
 }
