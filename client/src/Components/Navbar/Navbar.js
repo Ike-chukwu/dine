@@ -142,7 +142,7 @@ export const Navbar = (props) => {
                 to="/favourites"
                 style={{
                   display: "block",
-                  transitionDelay: isMenuActive ? "1.8s" : "0",
+                  transitionDelay: isMenuActive ?  "1.8s" : "0s",
                 }}
               >
                 favourites
@@ -157,7 +157,7 @@ export const Navbar = (props) => {
                 onClick={handleSignOut}
                 style={{
                   display: "block",
-                  transitionDelay: isMenuActive ? "2.0s" : "0",
+                  transitionDelay: isMenuActive ? "2.0s" : "0s",
                 }}
               >
                 sign out

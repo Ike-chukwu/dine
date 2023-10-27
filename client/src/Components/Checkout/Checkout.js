@@ -3,9 +3,13 @@ import "./Checkout.scss";
 import hills from "../../assets/images/homepage/enjoyable-place-desktop.jpg";
 import CheckoutInput from "./CheckoutInput/CheckoutInput";
 import { AuthContext } from "../../context";
+import Loader from "../Loader/Loader";
+import Error from "../Error/Error";
 
 const Checkout = () => {
   const { user, cartItems } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
   const [inputDetails, setInputDetails] = useState({
     firstName: "",
     lastName: "",
@@ -26,8 +30,9 @@ const Checkout = () => {
   };
 
   const checkout = async (e) => {
-    e.preventDefault()
-    await fetch("http://localhost:4000/checkout", {
+    e.preventDefault();
+    setLoading(true)
+    await fetch("https://gerith.onrender.com/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,9 +45,12 @@ const Checkout = () => {
       .then((response) => {
         if (response.url) {
           window.location.assign(response.url);
+          setLoading(false)
         }
-      });
-      
+      }).catch((error) => {
+        setLoading(false)
+        setError(error.message)
+      })
   };
 
   const details = [
@@ -87,6 +95,8 @@ const Checkout = () => {
     },
   ];
 
+  if(loading) return <Loader/>
+  if(error) return <Error>Sorry! You've reached a dead end</Error>
   return (
     <section className="checkout-parent">
       <h1 className="checkout-title">checkout</h1>
