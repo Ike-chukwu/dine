@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./EnjoyableSection.scss";
 import hills from "../../assets/images/homepage/enjoyable-place-desktop.jpg";
 import hillsT from "../../assets/images/homepage/enjoyable-place-tablet.jpg";
 import hillsM from "../../assets/images/homepage/enjoyable-place-mobile.jpg";
 import svgIcon from "../../assets/images/patterns/pattern-divide.svg";
-
 
 const EnjoyableSection = () => {
   return (

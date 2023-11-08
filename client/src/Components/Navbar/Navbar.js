@@ -4,6 +4,7 @@ import logoBlack from "../../assets/images/logoBlack.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 import { AuthContext } from "../../context";
+import { gsap } from "gsap";
 
 export const Navbar = (props) => {
   const [touched, setTouched] = useState(false);
@@ -91,9 +92,53 @@ export const Navbar = (props) => {
     }
   }, [isMenuActive]);
 
+  // gsap animation
+
+  let navbarParentRef = useRef();
+
+  useEffect(() => {
+    const logoRef = navbarParentRef.current.children[0].children;
+    const navLinksRef = navbarParentRef.current.children[1].children;
+    const iconsRef = navbarParentRef.current.children[2].children;
+    const ctx = gsap.context(() => {
+      const navTimeline = gsap.timeline();
+      navTimeline
+        .from(logoRef, {
+          autoAlpha: 0,
+          y: 20,
+          duration: 0.7,
+          ease: "power3",
+        })
+        .from(
+          navLinksRef,
+          {
+            autoAlpha: 0,
+            y: 20,
+            duration: 0.7,
+            ease: "power3",
+            stagger: 0.2,
+          },
+          "-=0.4"
+        )
+        .from(
+          iconsRef,
+          {
+            autoAlpha: 0,
+            y: 20,
+            duration: 0.7,
+            ease: "power3",
+            stagger: 0.1,
+          },
+          "-=0.4"
+        );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div className="nav-parent">
-      <div className="nav">
+      <div className="nav" ref={navbarParentRef}>
         <Link to="/">
           <img src={logo} alt="" className="logo" />
         </Link>
@@ -142,7 +187,7 @@ export const Navbar = (props) => {
                 to="/favourites"
                 style={{
                   display: "block",
-                  transitionDelay: isMenuActive ?  "1.8s" : "0s",
+                  transitionDelay: isMenuActive ? "1.8s" : "0s",
                 }}
               >
                 favourites

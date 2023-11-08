@@ -26,6 +26,25 @@
         .nav-link {
           text-decoration: none;
           color: white;
+          position: relative;
+
+          &::after {
+            position: absolute;
+            content: "";
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            bottom: -40%;
+            height: 3px;
+            background: #f7e172;
+            transition: width 0.5s ease-in-out;
+          }
+
+          &:hover {
+            &::after {
+              width: 100%;
+            }
+          }
         }
       }
     }
@@ -39,6 +58,11 @@
 
       i {
         cursor: pointer;
+
+        &:hover {
+          color: #f7e172;
+          font-weight: bold;
+        }
       }
 
       .icon-cart {

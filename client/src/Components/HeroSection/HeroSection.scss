@@ -9,6 +9,9 @@
   .hero {
     padding-top: 15rem;
     color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
 
     .hero-title {
       font-size: 6.4rem;
@@ -16,9 +19,13 @@
 
     p {
       font-size: 2rem;
-      margin-block: 4rem;
+      // margin-block: 4rem;
       width: 400px;
       line-height: 1.5;
+    }
+
+    .hiden-container {
+      overflow: hidden;
     }
   }
 }
