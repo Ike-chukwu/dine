@@ -196,12 +196,12 @@ const ReservationHero = () => {
     }
   };
 
-  useEffect(() => {
-    const html = document.querySelector("html");
-    if (html) {
-      html.style.overflow = isOverlayActive ? "hidden" : "auto";
-    }
-  }, [isOverlayActive]);
+  // useEffect(() => {
+  //   const html = document.querySelector("html");
+  //   if (html) {
+  //     html.style.overflow = isOverlayActive ? "hidden" : "auto";
+  //   }
+  // }, [isOverlayActive]);
 
   return (
     <div className="reservation-parent">
