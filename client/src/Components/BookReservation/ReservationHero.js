@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ReservationHero.scss";
 import Input from "../Input/Input";
 import emailjs from "@emailjs/browser";
+import logo from "../../assets/images/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const ReservationHero = () => {
+  const navigate = useNavigate();
   //state that saves all values from all input fields
   const [inputData, setInputData] = useState({
     Name: "",
@@ -22,6 +25,9 @@ const ReservationHero = () => {
   //monitor error in input field
   const [error, setError] = useState(false);
 
+  //monitor network error in booking
+  const [isThereNetworkError, setNetworkError] = useState(false);
+
   //function is triggered when any input field's value is changed
   const inputChange = (e) => {
     const value = e.target.value;
@@ -39,6 +45,9 @@ const ReservationHero = () => {
       DropDown: e.target.value,
     });
   };
+
+  //state that monitors the overlay message
+  const [isOverlayActive, setOverlayActive] = useState(false);
 
   //stores data to be rendred in name and email input fields
   const personDetails = [
@@ -147,7 +156,6 @@ const ReservationHero = () => {
       console.log(error);
       return;
     } else {
-      setError(false);
       emailjs
         .send(
           "service_1i3c82l",
@@ -157,10 +165,16 @@ const ReservationHero = () => {
         )
         .then(
           (response) => {
+            setError(false);
+            setNetworkError(false);
+            setOverlayActive(true);
             console.log("Email sent successfully:", response);
             // You can also provide feedback to the user here
           },
           (error) => {
+            setError(false);
+            setNetworkError(true);
+            setOverlayActive(true);
             console.error("Email could not be sent:", error);
             // Handle the error and provide feedback to the user
           }
@@ -182,8 +196,42 @@ const ReservationHero = () => {
     }
   };
 
+  useEffect(() => {
+    const html = document.querySelector("html");
+    if (html) {
+      html.style.overflow = isOverlayActive ? "hidden" : "auto";
+    }
+  }, [isOverlayActive]);
+
   return (
     <div className="reservation-parent">
+      {isOverlayActive && (
+        <div className="confirm-reservation">
+          <img src={logo} className="reserve-logo" alt="" />
+          {isThereNetworkError ? (
+            <p className="reserve-title">
+              Email could not be sent😒. <br />
+              Please try again
+            </p>
+          ) : (
+            <p className="reserve-title">Email sent successfully😊!</p>
+          )}
+          {isThereNetworkError ? (
+            <button onClick={() => setOverlayActive(false)}>
+              Book reservation again
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setOverlayActive(false);
+                navigate("/");
+              }}
+            >
+              back to home
+            </button>
+          )}
+        </div>
+      )}
       <section className="reservation-container">
         <div className="left-reservation">
           <h1 className="reservation-title">reservations</h1>
