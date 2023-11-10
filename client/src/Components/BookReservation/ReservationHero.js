@@ -226,7 +226,7 @@ const ReservationHero = () => {
                 setOverlayActive(false);
                 navigate("/");
                 const html = document.querySelector("html");
-                html.style.overflow = "au:to";
+                html.style.overflow = "auto";
               }}
             >
               back to home
