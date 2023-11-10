@@ -196,12 +196,12 @@ const ReservationHero = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const html = document.querySelector("html");
-  //   if (html) {
-  //     html.style.overflow = isOverlayActive ? "hidden" : "auto";
-  //   }
-  // }, [isOverlayActive]);
+  useEffect(() => {
+    const html = document.querySelector("html");
+    if (html) {
+      html.style.overflow = isOverlayActive ? "hidden" : "auto";
+    }
+  }, [isOverlayActive]);
 
   return (
     <div className="reservation-parent">
@@ -225,6 +225,8 @@ const ReservationHero = () => {
               onClick={() => {
                 setOverlayActive(false);
                 navigate("/");
+                const html = document.querySelector("html");
+                html.style.overflow = "au:to";
               }}
             >
               back to home
