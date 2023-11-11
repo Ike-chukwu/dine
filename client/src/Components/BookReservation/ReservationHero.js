@@ -217,7 +217,13 @@ const ReservationHero = () => {
             <p className="reserve-title">Email sent successfully😊!</p>
           )}
           {isThereNetworkError ? (
-            <button onClick={() => setOverlayActive(false)}>
+            <button
+              onClick={() => {
+                setOverlayActive(false);
+                const html = document.querySelector("html");
+                html.style.overflow = "auto";
+              }}
+            >
               Book reservation again
             </button>
           ) : (
