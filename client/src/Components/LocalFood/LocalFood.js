@@ -36,7 +36,6 @@ const LocalFood = () => {
     const pic_3 = rightDiv.children[3];
     const timeline = gsap.timeline();
     if (isIntersecting) {
-      console.log(isIntersecting);
       timeline
         .to(pic_1, {
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
