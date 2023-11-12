@@ -14,11 +14,13 @@
   .left-image {
     position: absolute;
     top: -20%;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
   }
 
   .left-image-tablet,
   .left-image-m2 {
     display: none;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
   }
 
   .left-image-m {
@@ -28,16 +30,22 @@
   .right-content {
     position: relative;
     left: 43%;
+    img{
+      visibility: hidden;
+      transform: translateX(-50px);
+    }
     h2 {
       font-size: 4rem;
       margin-block: 4rem;
+      visibility: hidden;
+      transform: translateX(-50px);
     }
-
     p {
       font-size: 2rem;
       width: 400px;
       line-height: 1.5;
-      // visibility: hidden;
+      visibility: hidden;
+      transform: translateX(-50px);
     }
   }
 }
