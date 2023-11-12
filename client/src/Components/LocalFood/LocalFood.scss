@@ -7,15 +7,23 @@
   .content-local-food {
     position: relative;
     padding-bottom: 5rem;
+    img {
+      transform: translateX(-50px);
+      visibility: hidden;
+    }
     h2 {
       font-size: 4rem;
       margin-block: 4rem;
+      transform: translateX(-50px);
+      visibility: hidden;
     }
 
     p {
       font-size: 2rem;
       width: 400px;
       line-height: 1.5;
+      transform: translateX(-50px);
+      visibility: hidden;
     }
   }
 
@@ -34,10 +42,16 @@
       position: absolute;
       right: -15%;
       top: 25%;
+      visibility: hidden;
+      transform: translate(-50px);
+    }
+    .foodImg {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
     }
     .foodImgTablet,
     .foodImgPhone {
       display: none;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
     }
   }
 }
@@ -114,7 +128,6 @@
     }
   }
 }
-
 
 @media (max-width: 700px) {
   .local-food {

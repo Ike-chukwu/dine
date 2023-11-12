@@ -10,7 +10,7 @@ const EnjoyableSection = () => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef(null);
   const mainRef = useRef();
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -77,7 +77,7 @@ const EnjoyableSection = () => {
           x: -0,
           duration: 0.7,
           ease: "power2",
-        })
+        },'-=0.2')
         .to(tilte, {
           autoAlpha: 1,
           x: 0,
