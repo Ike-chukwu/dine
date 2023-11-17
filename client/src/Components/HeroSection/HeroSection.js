@@ -6,14 +6,9 @@ import { gsap } from "gsap";
 const HeroSection = () => {
   const heroContainerRef = useRef();
   const [isIntersecting, setIsIntersecting] = useState(false);
+  const btn = useRef();
 
   useEffect(() => {
-    const heroTL = gsap.timeline();
-    const headerTitle = heroContainerRef.current.firstElementChild.children;
-    const pText =
-      heroContainerRef.current.firstElementChild.nextSibling.children;
-    const btn = heroContainerRef.current.children[2];
-
     const observer = new IntersectionObserver(
       (entry) => {
         const entries = entry[0].isIntersecting;
@@ -23,38 +18,43 @@ const HeroSection = () => {
     );
 
     observer.observe(heroContainerRef.current);
+    return () => observer.disconnect();
+  });
 
-    const ctx = gsap.context(() => {
+  useEffect(() => {
+    const heroTL = gsap.timeline();
+    const headerTitle = heroContainerRef.current.firstElementChild.children;
+    const pText =
+      heroContainerRef.current.firstElementChild.nextSibling.children;
+    if (isIntersecting) {
       heroTL
-        .from(headerTitle, {
-          y: 150,
+        .to(headerTitle, {
+          y: 0,
           duration: 1,
           ease: "power3",
           delay: 2,
         })
-        .from(
+        .to(
           pText,
           {
-            autoAlpha: 0,
-            y: 100,
-            duration: 1,
-            ease: "power3",
-          },
-          "-=0.6"
-        )
-        .from(
-          btn,
-          {
-            autoAlpha: 0,
+            autoAlpha: 1,
+            y: 0,
             duration: 1,
             ease: "power3",
           },
           "-=0.4"
+        )
+        .to(
+          btn.current,
+          {
+            autoAlpha: 1,
+            duration: 1,
+            ease: "power3",
+          },
+          "-=0.3"
         );
-    });
-
-    return () => ctx.revert();
-  });
+    }
+  }, [isIntersecting]);
 
   return (
     <div className="hero-imgae">
@@ -70,7 +70,7 @@ const HeroSection = () => {
             the freshest produce from the comfort of our farmhouse.
           </p>
         </span>
-        <Button />
+        <Button ref={btn} />
       </section>
     </div>
   );
