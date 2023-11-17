@@ -72,12 +72,16 @@ const EnjoyableSection = () => {
           },
           "<"
         )
-        .to(svg, {
-          autoAlpha: 1,
-          x: -0,
-          duration: 0.7,
-          ease: "power2",
-        },'-=0.2')
+        .to(
+          svg,
+          {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.7,
+            ease: "power2",
+          },
+          "-=0.2"
+        )
         .to(tilte, {
           autoAlpha: 1,
           x: 0,

@@ -25,12 +25,13 @@
 
   .left-image-m {
     display: none;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
   }
 
   .right-content {
     position: relative;
     left: 43%;
-    img{
+    img {
       visibility: hidden;
       transform: translateX(-50px);
     }

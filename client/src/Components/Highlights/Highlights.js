@@ -66,7 +66,6 @@ const Highlights = () => {
     const thirdFoodBoxRightSectionPTxt = thirdFoodBoxRightSection.children[1];
 
     if (isIntersecting) {
-      console.log(isIntersecting);
       tl.to(
         svg,
         {

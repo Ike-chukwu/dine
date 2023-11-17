@@ -4,6 +4,10 @@
     display: flex;
     gap: 20rem;
     align-items: center;
+    img {
+      visibility: hidden;
+      transform: translateX(-50px);
+    }
 
     .right-footer-content {
       display: flex;
@@ -16,6 +20,8 @@
         color: white;
         font-size: 2rem;
         font-weight: 100;
+        transform: translateX(-50px);
+        visibility: hidden;
       }
     }
   }

@@ -1,35 +1,56 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./HeroSection.scss";
 import Button from "../Button/Button";
 import { gsap } from "gsap";
 
 const HeroSection = () => {
   const heroContainerRef = useRef();
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
   useEffect(() => {
     const heroTL = gsap.timeline();
     const headerTitle = heroContainerRef.current.firstElementChild.children;
-    const pText = heroContainerRef.current.firstElementChild.nextSibling.children
-    const btn = heroContainerRef.current.children[2]
+    const pText =
+      heroContainerRef.current.firstElementChild.nextSibling.children;
+    const btn = heroContainerRef.current.children[2];
+
+    const observer = new IntersectionObserver(
+      (entry) => {
+        const entries = entry[0].isIntersecting;
+        setIsIntersecting(entries);
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(heroContainerRef.current);
 
     const ctx = gsap.context(() => {
-      heroTL.from(headerTitle, {
-        y: 150,
-        duration: 1,
-        ease: "power3",
-        delay: 2,
-      })
-      .from(pText, {
-        autoAlpha:0,
-        y: 100,
-        duration: 1,
-        ease: "power3",
-      }, '-=0.6')
-      .from(btn, {
-        autoAlpha:0,
-        duration: 1,
-        ease: "power3",
-      }, '-=0.4')
+      heroTL
+        .from(headerTitle, {
+          y: 150,
+          duration: 1,
+          ease: "power3",
+          delay: 2,
+        })
+        .from(
+          pText,
+          {
+            autoAlpha: 0,
+            y: 100,
+            duration: 1,
+            ease: "power3",
+          },
+          "-=0.6"
+        )
+        .from(
+          btn,
+          {
+            autoAlpha: 0,
+            duration: 1,
+            ease: "power3",
+          },
+          "-=0.4"
+        );
     });
 
     return () => ctx.revert();

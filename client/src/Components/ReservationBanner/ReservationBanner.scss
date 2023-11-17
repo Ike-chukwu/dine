@@ -8,9 +8,12 @@
 
     h1 {
       font-size: 4rem;
+      visibility: hidden;
+      transform: translateX(-50px);
     }
     button {
       padding-inline: 6rem;
+      // visibility: hidden;
     }
   }
 }

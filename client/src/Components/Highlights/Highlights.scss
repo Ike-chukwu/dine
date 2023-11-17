@@ -46,7 +46,6 @@
           padding-bottom: 3rem;
           .left {
             position: relative;
-            overflow: hidden;
             // z-index: 100;
             .food-img {
               position: relative;
@@ -173,6 +172,8 @@
             gap: 3.5rem;
 
             .left {
+              overflow: hidden;
+
               .s-icon {
                 display: none;
               }
