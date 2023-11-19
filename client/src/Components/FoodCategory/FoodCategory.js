@@ -18,7 +18,7 @@ const FoodCategory = () => {
   const [categoryErrorMessage, setCategoryErrorMessage] = useState(null);
   const [foodInCategoryErrorMessage, setFoodInCategoryErrorMessage] =
     useState(null);
-
+  const [isFilterDropdown, setFilterDropdown] = useState(false);
   let btns;
   let foods;
 
@@ -32,7 +32,7 @@ const FoodCategory = () => {
       const listOfCategories = result.categories;
       setData(listOfCategories);
       setCategory(listOfCategories[0].strCategory);
-      
+
       fetchFoodInCategory(listOfCategories[0].strCategory);
       setCategoryLoadingState(false);
     } catch (error) {
@@ -69,49 +69,55 @@ const FoodCategory = () => {
     return <Error>Sorry!You've reached a dead end</Error>;
   }
   //return the data from the two api calls
-    return (
-      <div className="menu-parent">
-        <section className="menu">
-          <h1>
-            What category does the food <br /> you want fall under?
-          </h1>
-          <div className="btn-categories">
-            {data.map((category) => {
-              return (
-                <div
-                  onClick={() => {
-                    setCategory(category.strCategory);
-                    setFoodInCategoryLoadingState(true);
-                    console.log(foodInCategoryLoadingState);
-                    fetchFoodInCategory(category.strCategory);
-                  }}
-                  className={
-                    category.strCategory == currentCategory
-                      ? "single-category clicked"
-                      : "single-category"
-                  }
-                >
-                  {category.strCategory}
-                </div>
-              );
-            })}
-          </div>
-          <div className="food-result">
-            {foodData.map((food) => {
-              return (
-                <Card
-                  key={food.idMeal}
-                  imageSrc={food.strMealThumb}
-                  mealName={food.strMeal}
-                  id={food.idMeal}
-                />
-              );
-            })}
-          </div>
-        </section>
-      </div>
-    );
-  }
-;
-
+  return (
+    <div className="menu-parent">
+      <section className="menu">
+        <h1>
+          What category does the food <br /> you want fall under?
+        </h1>
+        <div className="btn-categories">
+          {/* <div
+            className="selected-category"
+            onClick={() => setFilterDropdown(!isFilterDropdown)}
+          >
+          <span className="real-cat-span">{currentCategory}</span>
+            
+            <i className="fas fa-caret-down"></i>
+          </div> */}
+          {data.map((category) => {
+            return (
+              <div
+                onClick={() => {
+                  setCategory(category.strCategory);
+                  setFoodInCategoryLoadingState(true);
+                  console.log(foodInCategoryLoadingState);
+                  fetchFoodInCategory(category.strCategory);
+                }}
+                className={
+                  category.strCategory == currentCategory
+                    ? "single-category clicked"
+                    : "single-category"
+                }
+              >
+                {category.strCategory}
+              </div>
+            );
+          })}
+        </div>
+        <div className="food-result">
+          {foodData.map((food) => {
+            return (
+              <Card
+                key={food.idMeal}
+                imageSrc={food.strMealThumb}
+                mealName={food.strMeal}
+                id={food.idMeal}
+              />
+            );
+          })}
+        </div>
+      </section>
+    </div>
+  );
+};
 export default FoodCategory;

@@ -14,7 +14,9 @@
       margin-top: 5rem;
       justify-content: center;
       align-items: center;
-
+      .selected-category {
+        display: none;
+      }
       .single-category {
         width: 200px;
         height: 50px;
@@ -87,13 +89,40 @@
       }
 
       .btn-categories {
+        flex-direction: column;
+        width: 250px;
+        margin-inline: auto;
+        gap: 0;
+        background: white;
         .single-category {
           font-size: 1.4rem;
-          width: 200px;
+          border: none;
+          text-align: center;
+          border-top: 0.1rem solid black;
+          border-bottom: 0.1rem solid black;
           height: unset;
           padding-inline: 2rem;
           line-height: unset;
           padding-block: 0.8rem;
+          // box-shadow: 0 7.5rem 10rem -5rem rgba(56, 66, 85, 0.5);
+        }
+        .selected-category {
+          display: unset;
+          font-size: 1.4rem;
+          border: none;
+          text-align: center;
+          width: 100%;
+          height: unset;
+          padding-inline: 2rem;
+          line-height: unset;
+          padding-block: 0.8rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          i{
+            font-size: 1.4rem;
+            margin-left: .5rem;
+          }
         }
       }
 
