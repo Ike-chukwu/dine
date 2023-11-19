@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Staff.scss";
 import chef1 from "../../assets/images/staff/chef-1.jpg";
 import chef2 from "../../assets/images/staff/chef-2.jpg";
@@ -12,19 +12,20 @@ import chef8 from "../../assets/images/staff/chef-8.jpg";
 import chef9 from "../../assets/images/staff/chef-9.jpg";
 import cleaner1 from "../../assets/images/staff/cleaner-1.jpg";
 import cleaner2 from "../../assets/images/staff/cleaner-2.jpg";
+import { gsap } from "gsap";
 
 const Staff = () => {
-
-  const [activeStaff,setActiveStaff] = useState()
-  const [index,setIndex] = useState(0)
-
+  const [activeStaff, setActiveStaff] = useState();
+  const [index, setIndex] = useState(0);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const staffContainerRef = useRef();
 
   const staff = [
     {
       id: 0,
       name: "Wei",
       job: "Head Chef",
-      image:chef1,
+      image: chef1,
     },
     {
       id: 1,
@@ -95,29 +96,90 @@ const Staff = () => {
   ];
 
   const viewStaffPicture = (id) => {
-        setActiveStaff(id)
-        // const staffHoveredOnPosition = staff.findIndex((staff) => staff.id == activeStaff)
-        setIndex(id)
-  }
+    setActiveStaff(id);
+    // const staffHoveredOnPosition = staff.findIndex((staff) => staff.id == activeStaff)
+    setIndex(id);
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0].isIntersecting;
+        setIsIntersecting(entry);
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+    observer.observe(staffContainerRef.current);
+
+    return () => observer.disconnect();
+  });
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+    const mainHeading = staffContainerRef.current.children[0].children;
+    const mainPicDiv = staffContainerRef.current.children[1];
+    console.log(mainPicDiv);
+    if (isIntersecting) {
+      gsap
+        .to(mainHeading, {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.7,
+          ease: "power3",
+        })
+     
+    }
+  }, [isIntersecting]);
 
   return (
-    <div className="team-details">
-      <h1>Meet our staff</h1>
+    <div className="team-details" ref={staffContainerRef}>
+      <span className="hidden-class">
+        <h1>Meet our staff</h1>
+      </span>
       <div className="team-content">
         <div className="people-img">
-          <img src={index == null ?staff[0].image : staff[index].image} alt="" />
+          <img
+            src={index == null ? staff[0].image : staff[index].image}
+            alt=""
+          />
         </div>
         <div className="personal-details">
           {staff.map((staff, index) => {
-           return <div className={staff.id == activeStaff ? "card hovered" :"card"} key={staff.id} onMouseOver={() => viewStaffPicture(staff.id)}>
-              <p className="name">{staff.name}</p>
-              <span className="position">{staff.job}</span>
-              <div className="socials">
-                <i className={staff.id == activeStaff ?"fab fa-facebook hovered":"fab fa-facebook"}></i>
-                <i className={staff.id == activeStaff ?"fab fa-twitter hovered":"fab fa-twitter"}></i>
-                <i className={staff.id == activeStaff ?"fab fa-twitter hovered":"fab fa-linkedin"}></i>
+            return (
+              <div
+                className={staff.id == activeStaff ? "card hovered" : "card"}
+                key={staff.id}
+                onMouseOver={() => viewStaffPicture(staff.id)}
+              >
+                <p className="name">{staff.name}</p>
+                <span className="position">{staff.job}</span>
+                <div className="socials">
+                  <i
+                    className={
+                      staff.id == activeStaff
+                        ? "fab fa-facebook hovered"
+                        : "fab fa-facebook"
+                    }
+                  ></i>
+                  <i
+                    className={
+                      staff.id == activeStaff
+                        ? "fab fa-twitter hovered"
+                        : "fab fa-twitter"
+                    }
+                  ></i>
+                  <i
+                    className={
+                      staff.id == activeStaff
+                        ? "fab fa-twitter hovered"
+                        : "fab fa-linkedin"
+                    }
+                  ></i>
+                </div>
               </div>
-            </div>;
+            );
           })}
         </div>
       </div>

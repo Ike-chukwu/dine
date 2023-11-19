@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./RestaurantInfo.scss";
 import picture from "../../assets/images/../../assets/images/homepage/beef-mobile@2x.jpg";
 import pictureMobile from "../../assets/images/../../assets/images/homepage/chocolate-mobile.jpg";
@@ -6,10 +6,101 @@ import food from "../../assets/images/homepage/locally-sourced-tablet.jpg";
 import foodMobile from "../../assets/images/homepage/locally-sourced-mobile.jpg";
 import Button from "../Button/Button";
 import Staff from "../Staff/Staff";
+import { gsap } from "gsap";
 
 export const RestaurantInfo = () => {
+  const aboutContainerRef = useRef();
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const btn = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entry) => {
+        const entries = entry[0].isIntersecting;
+        setIsIntersecting(entries);
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(aboutContainerRef.current);
+    return () => observer.disconnect();
+  });
+
+  useEffect(() => {
+    const aboutTl = gsap.timeline();
+    const firstRestaurantInfo = aboutContainerRef.current.children[0];
+    const firstRestaurantInfoFistChild = firstRestaurantInfo.children[0];
+    const firstRestaurantInfoFistChildImg =
+      firstRestaurantInfoFistChild.children[0];
+    const firstRestaurantInfoText =
+      firstRestaurantInfo.children[1].children[0].children;
+    const secondRestaurantInfoSecondChild =
+      aboutContainerRef.current.children[1].children[1];
+    const secondRestaurantInfoImg =
+      aboutContainerRef.current.children[1].children[1].children;
+    const secondRestaurantInfoText =
+      aboutContainerRef.current.children[1].children[0].children[0].children;
+    if (isIntersecting) {
+      aboutTl
+        .to(firstRestaurantInfoFistChild, {
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          duration: 2.4,
+          ease: "power2.easeInOut",
+          delay: 0.5,
+        })
+        .to(
+          firstRestaurantInfoFistChildImg,
+          {
+            ease: "power3.easeInOut",
+            duration: 2,
+            scale: 1,
+          },
+          "<"
+        )
+        .to(
+          firstRestaurantInfoText,
+          {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.7,
+            stagger: 0.2,
+            duration: 2,
+          },
+          "<"
+        )
+        .to(
+          secondRestaurantInfoText,
+          {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.7,
+            stagger: 0.2,
+          }
+        )
+        .to(
+          secondRestaurantInfoSecondChild,
+          {
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+            duration: 2.4,
+            ease: "power2.easeInOut",
+            delay: 0.5,
+          },
+          "<"
+        )
+        .to(
+          secondRestaurantInfoImg,
+          {
+            ease: "power3.easeInOut",
+            duration: 2,
+            scale: 1,
+          },
+          "<"
+        );
+    }
+  }, [isIntersecting]);
+
   return (
-    <div className="restaurant-info-parent">
+    <div className="restaurant-info-parent" ref={aboutContainerRef}>
       <div className="restaurant-info">
         <div className="restaurant-info-img">
           <img src={food} alt="" />

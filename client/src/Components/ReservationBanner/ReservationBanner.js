@@ -27,14 +27,18 @@ const ReservationBanner = () => {
     const actualBannerSectionRef = bannerRef.current.children[0];
     const tilteRef = actualBannerSectionRef.children[0];
     const tl = gsap.timeline();
-    console.log(btnRef);
     if (isIntersecting) {
       tl.to(tilteRef, {
         autoAlpha: 1,
         x: 0,
         duration: 0.7,
         ease: "power2",
-      }).from(btnRef.current, { autoAlpha: 0, duration: 1, x: -50, ease: "power3" });
+      }).to(btnRef.current, {
+        autoAlpha: 1,
+        duration: 1,
+        x: 0,
+        ease: "power3",
+      });
     }
   }, [isIntersecting]);
 

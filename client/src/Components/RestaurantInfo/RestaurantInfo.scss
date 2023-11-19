@@ -1,15 +1,18 @@
 .restaurant-info-parent {
   .restaurant-info {
     display: flex;
-
+    background: #111111;
     .restaurant-info-img {
       width: 50%;
       height: 600px;
+      overflow: hidden;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: center;
+        scale: 1.2;
       }
       .mobile-img {
         display: none;
@@ -29,6 +32,8 @@
           margin-bottom: 2rem;
           text-align: left;
           text-transform: uppercase;
+          transform: translateX(-50px);
+          visibility: hidden;
         }
 
         p {
@@ -36,6 +41,8 @@
           margin-bottom: 1.5rem;
           width: 400px;
           line-height: 1.5;
+          transform: translateX(-50px);
+          visibility: hidden;
         }
       }
     }
