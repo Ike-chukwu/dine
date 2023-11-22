@@ -20,6 +20,9 @@ section {
     padding-block: 8rem;
 }
 
+.App{
+    visibility: hidden;
+}
 
 @media(max-width:1490px) {
     section {

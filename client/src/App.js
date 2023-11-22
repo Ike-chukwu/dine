@@ -7,7 +7,7 @@ import Menu from "./Pages/Menu";
 import SearchedResult from "./Components/SearchedResult/SearchedResult";
 import Search from "./Pages/Search";
 import Reservation from "./Pages/Reservation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Cart from "./Components/Cart/Cart";
 import ViewFoodPage from "./Components/ViewFoodPage/ViewFoodPage";
 import Favourites from "./Pages/Favourites";
@@ -16,12 +16,25 @@ import Checkout from "./Components/Checkout/Checkout";
 import Protected from "./Components/Protected/Protected";
 import Success from "./Pages/Success";
 import Cancel from "./Pages/Cancel";
+import { gsap } from "gsap";
 
 function App() {
   const [isCartActive, setCartActive] = useState(false);
+  const appRef = useRef();
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(appRef.current, {
+        autoAlpha: 1,
+        duration: 0,
+        delay: 0,
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className="App">
+    <div className="App" ref={appRef}>
       <Navbar setCartActive={setCartActive} isCartActive={isCartActive} />
       <Routes>
         <Route path="/" element={<Home />} />

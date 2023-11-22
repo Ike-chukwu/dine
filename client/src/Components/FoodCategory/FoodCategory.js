@@ -104,6 +104,43 @@ const FoodCategory = () => {
             );
           })}
         </div>
+        <div className="mobile-food-categories">
+          <div className="inner-filter-parent">
+            <span className="filter-title">Filter by category</span>
+            <div className="inner-filter-first-child">
+              <div className="insider-filter">
+                <i
+                  className="fas fa-caret-down"
+                  onClick={() => setFilterDropdown(!isFilterDropdown)}
+                ></i>
+                <span className="current-filter">{currentCategory}</span>
+              </div>
+              <div
+                className={
+                  isFilterDropdown
+                    ? "filtering-options filter-open "
+                    : "filtering-options"
+                }
+              >
+                {data.map((category) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        setCategory(category.strCategory);
+                        setFoodInCategoryLoadingState(true);
+                        setFilterDropdown(false);
+                        fetchFoodInCategory(category.strCategory);
+                      }}
+                      className="filter-text"
+                    >
+                      {category.strCategory}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="food-result">
           {foodData.map((food) => {
             return (
