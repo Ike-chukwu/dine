@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./ViewFoodPage.scss";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import guard1 from "../../assets/images/staff/guard-1.jpg";
@@ -8,6 +8,7 @@ import Loader from "../../Components/Loader/Loader";
 import Error from "../../Components/Error/Error";
 import { AuthContext } from "../../context";
 import { auth, db } from "../../Firebase";
+import { gsap } from "gsap";
 import {
   FieldValue,
   arrayRemove,
@@ -29,12 +30,12 @@ const ViewFoodPage = () => {
   const [errorMessage, setErrorMessage] = useState();
   const [itemAmount, setItemAmount] = useState(1);
   const [isInFav, setIsInFav] = useState(false);
-
+  const [isIntersecting, setIsIntersecting] = useState(false);
   //genearting an array that has a lenth between 1 and 5
   const randomLength = Math.floor(Math.random() * 5) + 1; // Random length between 1 and 5
   const initialArray = Array(randomLength).fill(null); // Create an array of the random length
   const [rating, setRating] = useState(initialArray);
-
+  const mainSectionRef = useRef();
   const {
     clearCart,
     removeFromCartHandler,
@@ -179,11 +180,124 @@ const ViewFoodPage = () => {
     }
   }, [isInFav]);
 
+  useEffect(() => {
+    const observerCallback = (entries) => {
+      const isIntersecting = entries[0].isIntersecting;
+      setIsIntersecting(isIntersecting);
+    };
+
+    // Check if sectionRef.current is not null before creating the observer
+    if (mainSectionRef.current) {
+      const observer = new IntersectionObserver(observerCallback, {
+        threshold: 0.2,
+      });
+
+      observer.observe(mainSectionRef.current);
+
+      // Cleanup the observer when the component is unmounted
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, [mainSectionRef.current]);
+
+  useEffect(() => {
+    if (isIntersecting) {
+      const backTag = mainSectionRef.current.children[0].children[0];
+      const img = mainSectionRef.current.children[1].children[0].children[0];
+      const foodName =
+        mainSectionRef.current.children[1].children[1].children[0];
+      const foodPrice =
+        mainSectionRef.current.children[1].children[1].children[1].children;
+      const foodCategory =
+        mainSectionRef.current.children[1].children[1].children[2].children;
+      const foodArea =
+        mainSectionRef.current.children[1].children[1].children[3].children;
+      const foodIngredients =
+        mainSectionRef.current.children[1].children[1].children[4].children;
+      const foodRating =
+        mainSectionRef.current.children[1].children[1].children[5].children;
+      const firstSetOfBtns =
+        mainSectionRef.current.children[1].children[1].children[6].children[0].children
+      const secondBtn =
+        mainSectionRef.current.children[1].children[1].children[6].children[1]
+      const tl = gsap.timeline();
+      tl.to(backTag, {
+        x: 0,
+        autoAlpha: 1,
+        ease: "power3",
+        duration: 0.5,
+        delay: 0,
+      })
+        .to(img, {
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          ease: "power3",
+          duration: 2,
+          ease: "power3.easeInOut",
+        })
+        .to(foodName, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power2",
+        })
+        .to(foodPrice, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power2",
+          stagger: 0.3,
+        })
+        .to(foodCategory, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power2",
+          stagger: 0.3,
+        })
+        .to(foodArea, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power2",
+          stagger: 0.3,
+        })
+        .to(foodIngredients, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power2",
+          stagger: 0.3,
+        })
+        .to(foodRating, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power2",
+          stagger: 0.3,
+        })
+        .to(firstSetOfBtns, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power2",
+          stagger: 0.3,
+        })
+        .to(secondBtn, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power2",
+          stagger: 0.3,
+        })
+    }
+  }, [isIntersecting]);
+
   if (loading) return <Loader />;
   if (errorMessage) return <Error>Sorry!You've reached a dead end</Error>;
   return (
     <div className="div view-peroduct-parent">
-      <section className="view-product-container">
+      <section className="view-product-container" ref={mainSectionRef}>
         <Link to="/menu">
           <span className="go-back">go back to menu</span>
         </Link>
@@ -262,7 +376,6 @@ const ViewFoodPage = () => {
                       price: currentFood[0].idMeal.slice(-2),
                       amount: itemAmount,
                       image: currentFood[0].strMealThumb,
-                      
                     })
                   }
                 >

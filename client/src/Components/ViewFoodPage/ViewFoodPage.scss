@@ -3,6 +3,8 @@
     font-size: 2rem;
     text-transform: capitalize;
     color: black;
+    visibility: hidden;
+    transform: translateX(-50px);
 
     &:hover {
       text-decoration: underline;
@@ -22,6 +24,7 @@
       img {
         width: 100%;
         object-fit: cover;
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
       }
     }
     .right-food-side {
@@ -31,6 +34,8 @@
       gap: 4rem;
       .product-name {
         font-size: 4rem;
+        visibility: hidden;
+        transform: translateX(-50px);
       }
 
       .product-category {
@@ -43,15 +48,21 @@
           font-size: 2rem;
           text-transform: capitalize;
           width: 150px;
+          visibility: hidden;
+          transform: translateX(-50px);
         }
         .category-name {
           font-size: 2rem;
           text-transform: capitalize;
           font-weight: 600;
+          visibility: hidden;
+          transform: translateX(-50px);
         }
         .category-price {
           font-size: 2rem;
           font-weight: 600;
+          visibility: hidden;
+          transform: translateX(-50px);
         }
       }
       .btns {
@@ -67,6 +78,8 @@
           display: flex;
           align-items: center;
           gap: 1rem;
+          visibility: hidden;
+          transform: translateX(-50px);
 
           .subtract,
           .add {
@@ -86,6 +99,9 @@
 
         .add-btn {
           background: black;
+          visibility: hidden;
+          transform: translateX(-50px);
+
           &:hover {
             border: 0.2rem solid black;
             background: none;
