@@ -32,6 +32,9 @@ const Preloader = () => {
         duration: 0.4,
         ease: "power2.easeIn",
       })
+      .set(firstText, {
+        display: "none",
+      })
       .to(secodText, {
         autoAlpha: 1,
         duration: 0.4,
@@ -41,6 +44,9 @@ const Preloader = () => {
         autoAlpha: 0,
         duration: 0.4,
         ease: "power2.easeIn",
+      })
+      .set(secodText, {
+        display: "none",
       })
       .to(thirdText, {
         autoAlpha: 1,
@@ -52,6 +58,9 @@ const Preloader = () => {
         duration: 0.4,
         ease: "power2.easeIn",
       })
+      .set(thirdText, {
+        display: "none",
+      })
       .to(fourthText, {
         autoAlpha: 1,
         duration: 0.4,
@@ -61,12 +70,18 @@ const Preloader = () => {
         autoAlpha: 0,
         duration: 0.4,
         ease: "power2.easeIn",
+      })
+      .set(fourthText, {
+        display: "none",
       })
       .to(preloaderContiner.current, {
         delay: 0.2,
         height: 0,
         duration: 0.7,
         ease: "power2.easeInOut",
+      })
+      .set(preloaderContiner.current, {
+        display: "none",
       });
     const timeOut = setTimeout(() => {
       setPreloader(false);
