@@ -28,6 +28,10 @@
         border: 0.2rem solid black;
         color: black;
         cursor: pointer;
+        font-family: "Quicksand", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
 
         &.clicked {
           background: black;
@@ -162,6 +166,10 @@
                 text-align: center;
                 border-top: 0.1rem solid white;
                 cursor: pointer;
+                font-family: "Quicksand", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
               }
             }
           }
