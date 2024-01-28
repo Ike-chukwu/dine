@@ -49,7 +49,6 @@ export const Navbar = (props) => {
     if (inputValue === "") {
       // If the input is empty, clear the results
       setFoodResult(null);
-      console.log(inputValue);
     } else {
       // Otherwise, fetch the data
       fetchData();

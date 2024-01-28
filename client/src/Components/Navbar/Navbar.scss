@@ -151,7 +151,6 @@
             top: 100%;
             background: white;
             width: 100%;
-            // padding-block: 1.5rem;
             min-height: 0;
             max-height: 300px;
             overflow-y: scroll;
@@ -162,12 +161,11 @@
               padding-block: 1rem;
 
               &:hover {
+                color: white;
                 cursor: pointer;
                 font-weight: bold;
                 background: #ef4444;
               }
-              // border-top: 0.1rem solid black;
-              // border-bottom: 0.1rem solid black;
             }
           }
         }
