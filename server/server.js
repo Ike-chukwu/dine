@@ -29,8 +29,8 @@ app.post("/checkout", async (req, res) => {
       };
     }),
     mode: "payment",
-    success_url: "http://localhost:3000/success",
-    cancel_url: "http://localhost:3000/cancel",
+    success_url: "https://dine-sigma.vercel.app/success",
+    cancel_url: "https://dine-sigma.vercel.app//cancel",
   });
 
   res.send(
