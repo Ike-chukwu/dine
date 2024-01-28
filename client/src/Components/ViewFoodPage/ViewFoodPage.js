@@ -35,7 +35,6 @@ const ViewFoodPage = () => {
   const randomLength = Math.floor(Math.random() * 5) + 1; // Random length between 1 and 5
   const initialArray = Array(randomLength).fill(null); // Create an array of the random length
   const [rating, setRating] = useState(initialArray);
-  const mainSectionRef = useRef();
   const {
     clearCart,
     removeFromCartHandler,
@@ -180,124 +179,11 @@ const ViewFoodPage = () => {
     }
   }, [isInFav]);
 
-  useEffect(() => {
-    const observerCallback = (entries) => {
-      const isIntersecting = entries[0].isIntersecting;
-      setIsIntersecting(isIntersecting);
-    };
-
-    // Check if sectionRef.current is not null before creating the observer
-    if (mainSectionRef.current) {
-      const observer = new IntersectionObserver(observerCallback, {
-        threshold: 0.2,
-      });
-
-      observer.observe(mainSectionRef.current);
-
-      // Cleanup the observer when the component is unmounted
-      return () => {
-        observer.disconnect();
-      };
-    }
-  }, [mainSectionRef.current]);
-
-  useEffect(() => {
-    if (isIntersecting) {
-      const backTag = mainSectionRef.current.children[0].children[0];
-      const img = mainSectionRef.current.children[1].children[0].children[0];
-      const foodName =
-        mainSectionRef.current.children[1].children[1].children[0];
-      const foodPrice =
-        mainSectionRef.current.children[1].children[1].children[1].children;
-      const foodCategory =
-        mainSectionRef.current.children[1].children[1].children[2].children;
-      const foodArea =
-        mainSectionRef.current.children[1].children[1].children[3].children;
-      const foodIngredients =
-        mainSectionRef.current.children[1].children[1].children[4].children;
-      const foodRating =
-        mainSectionRef.current.children[1].children[1].children[5].children;
-      const firstSetOfBtns =
-        mainSectionRef.current.children[1].children[1].children[6].children[0].children
-      const secondBtn =
-        mainSectionRef.current.children[1].children[1].children[6].children[1]
-      const tl = gsap.timeline();
-      tl.to(backTag, {
-        x: 0,
-        autoAlpha: 1,
-        ease: "power3",
-        duration: 0.4,
-        delay: 0,
-      })
-        .to(img, {
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-          ease: "power3",
-          duration: 1,
-          ease: "power3.easeInOut",
-        })
-        .to(foodName, {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.4,
-          ease: "power2",
-        })
-        .to(foodPrice, {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.4,
-          ease: "power2",
-          stagger: 0.1,
-        })
-        .to(foodCategory, {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.4,
-          ease: "power2",
-          stagger: 0.1,
-        })
-        .to(foodArea, {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.4,
-          ease: "power2",
-          stagger: 0.1,
-        })
-        .to(foodIngredients, {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.4,
-          ease: "power2",
-          stagger: 0.1,
-        })
-        .to(foodRating, {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.4,
-          ease: "power2",
-          stagger: 0.1,
-        })
-        .to(firstSetOfBtns, {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.4,
-          ease: "power2",
-          stagger: 0.1,
-        })
-        .to(secondBtn, {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.4,
-          ease: "power2",
-          stagger: 0.1,
-        })
-    }
-  }, [isIntersecting]);
-
   if (loading) return <Loader />;
   if (errorMessage) return <Error>Sorry!You've reached a dead end</Error>;
   return (
     <div className="div view-peroduct-parent">
-      <section className="view-product-container" ref={mainSectionRef}>
+      <section className="view-product-container">
         <Link to="/menu">
           <span className="go-back">go back to menu</span>
         </Link>
