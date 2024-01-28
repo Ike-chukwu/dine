@@ -258,6 +258,7 @@ export const Navbar = (props) => {
               <div className="main-search">
                 <input
                   type="text"
+                  placeholder="Search your favourite meal..."
                   onChange={(e) => foodInput(e)}
                   ref={inputRef}
                   value={searchedFood}

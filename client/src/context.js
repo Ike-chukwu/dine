@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }) => {
       return;
     }
     setCartItems([...cartItems, { ...addedFood, amount: addedFood.amount }]);
-    console.log(cartItems);
   };
 
   //function that remove food from cart
