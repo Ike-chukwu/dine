@@ -63,6 +63,7 @@ const Preloader = () => {
         ease: "power2.easeIn",
       })
       .to(preloaderContiner.current, {
+        delay: 0.2,
         height: 0,
         duration: 0.7,
         ease: "power2.easeInOut",
