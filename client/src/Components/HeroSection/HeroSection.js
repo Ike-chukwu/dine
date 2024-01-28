@@ -30,16 +30,16 @@ const HeroSection = () => {
       heroTL
         .to(headerTitle, {
           y: 0,
-          duration: 1,
+          duration: .7,
           ease: "power3",
-          delay: 2,
+          delay: 1.8,
         })
         .to(
           pText,
           {
             autoAlpha: 1,
             y: 0,
-            duration: 1,
+            duration: .7,
             ease: "power3",
           },
           "-=0.4"
@@ -48,7 +48,7 @@ const HeroSection = () => {
           btn.current,
           {
             autoAlpha: 1,
-            duration: 1,
+            duration: .7,
             ease: "power3",
           },
           "-=0.3"

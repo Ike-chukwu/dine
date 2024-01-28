@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import "./Cart.scss";
-import image from "../../assets/images/homepage/salmon-desktop-tablet.jpg";
 import { useEffect } from "react";
 import { AuthContext } from "../../context";
 import { useNavigate } from "react-router-dom";

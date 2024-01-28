@@ -31,7 +31,7 @@ const Footer = () => {
       tl.to(imgRef, {
         autoAlpha: 1,
         x: 0,
-        duration: 0.7,
+        duration: 0.4,
         ease: "power2",
       })
         .to(
@@ -39,7 +39,7 @@ const Footer = () => {
           {
             autoAlpha: 1,
             x: 0,
-            duration: 0.7,
+            duration: 0.4,
             ease: "power2",
             stagger: 0.3,
           },
@@ -50,7 +50,7 @@ const Footer = () => {
           {
             autoAlpha: 1,
             x: 0,
-            duration: 0.7,
+            duration: 0.4,
             ease: "power2",
             stagger: 0.3,
           },

@@ -37,8 +37,6 @@ const SearchedResult = (props) => {
       </div>
       <div className="food-result">
         {foodResultRender}
-        {/* <Card name="spaghetti" /> */}
-        {/* <p>No results found</p> */}
       </div>
     </section>
   );

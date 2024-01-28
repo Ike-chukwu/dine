@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(cartItemsFromLocalStorage);
   const [searchedResultLoading, setSearchedResult] = useState(false);
   const [favs, addToFavs] = useState([]);
-
+  const [isPreloaderShowing, setPreloader] = useState(true);
   //function that adds food to cart
   const addToCartHandler = (addedFood) => {
     const isFoodInCart = cartItems.some((food) => food.id == addedFood.id);
@@ -118,6 +118,8 @@ export const AuthProvider = ({ children }) => {
         favs,
         addToFavs,
         setCartItems,
+        isPreloaderShowing,
+        setPreloader,
       }}
     >
       {children}

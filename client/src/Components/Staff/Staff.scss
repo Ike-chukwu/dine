@@ -45,8 +45,8 @@
         padding-block: 3.5rem;
         &.hovered {
           font-weight: bold;
-          color: #f7e172;
-          border-bottom: 0.2rem solid #f7e172;
+          color: #ef4444;
+          border-bottom: 0.2rem solid #ef4444;
         }
         .name {
           font-size: 3rem;
@@ -72,7 +72,8 @@
             border: 0.1rem solid lightgray;
 
             &.hovered {
-              background: #f7e172;
+              background: #ef4444;
+              color: white;
             }
           }
         }

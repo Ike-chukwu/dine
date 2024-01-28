@@ -7,6 +7,10 @@ button {
   border: 0.1rem solid white;
   outline: none;
   cursor: pointer;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @media (max-width: 1060px) {

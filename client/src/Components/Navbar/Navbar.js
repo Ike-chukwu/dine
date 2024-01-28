@@ -148,6 +148,7 @@ export const Navbar = (props) => {
             <Link
               className={isMenuActive ? "nav-link show" : "nav-link"}
               to="/"
+              onClick={() => setMenuActive(false)}
               style={{
                 display: "block",
                 transitionDelay: isMenuActive ? "1.2s" : "0s",
@@ -159,6 +160,7 @@ export const Navbar = (props) => {
           <div className="nav-wrapper">
             <Link
               className={isMenuActive ? "nav-link show" : "nav-link"}
+              onClick={() => setMenuActive(false)}
               to="/about"
               style={{
                 display: "block",
@@ -170,6 +172,7 @@ export const Navbar = (props) => {
           </div>
           <div className="nav-wrapper">
             <Link
+              onClick={() => setMenuActive(false)}
               className={isMenuActive ? "nav-link show" : "nav-link"}
               to="/menu"
               style={{
@@ -183,6 +186,7 @@ export const Navbar = (props) => {
           {user && (
             <div className="nav-wrapper">
               <Link
+                onClick={() => setMenuActive(false)}
                 className={isMenuActive ? "nav-link show" : "nav-link"}
                 to="/favourites"
                 style={{
@@ -199,7 +203,10 @@ export const Navbar = (props) => {
               <Link
                 className={isMenuActive ? "nav-link show" : "nav-link"}
                 to="/signIn"
-                onClick={handleSignOut}
+                onClick={() => {
+                  handleSignOut();
+                  setMenuActive(false);
+                }}
                 style={{
                   display: "block",
                   transitionDelay: isMenuActive ? "2.0s" : "0s",
@@ -211,6 +218,7 @@ export const Navbar = (props) => {
           ) : (
             <div className="nav-wrapper">
               <Link
+                onClick={() => setMenuActive(false)}
                 className={isMenuActive ? "nav-link show" : "nav-link"}
                 to="/signIn"
                 style={{
@@ -265,9 +273,7 @@ export const Navbar = (props) => {
                       {result.strMeal}
                     </li>
                   ))}
-                  {/* <li>me</li>
-                  <li>me</li>
-                  <li>me</li> */}
+    
                 </ul>
               </div>
               <i

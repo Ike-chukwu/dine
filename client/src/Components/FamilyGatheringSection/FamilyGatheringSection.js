@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import "./FamilyGatheringSection.scss";
 import lines from "../../assets/images/patterns/pattern-lines.svg";
 import gathering from "../../assets/images/homepage/family-gathering-desktop.jpg";
@@ -12,8 +12,10 @@ import specialEventsM from "../../assets/images/homepage/special-events-mobile.j
 import socialEventsM from "../../assets/images/homepage/social-events-mobile.jpg";
 import svgIcon from "../../assets/images/patterns/pattern-divide.svg";
 import Button from "../Button/Button";
+import { gsap } from "gsap";
 
 const FamilyGatheringSection = () => {
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [index, setIndex] = useState(0);
   let distance;
@@ -37,6 +39,12 @@ const FamilyGatheringSection = () => {
       img: socialEvents,
     },
   ];
+
+  // const modifiedFullScreenData = fullScreenData.map((data) => {
+  //   return { ...data, ref: createRef() };
+  // });
+
+  // console.log(modifiedFullScreenData);
 
   const midScreenData = [
     {
@@ -119,6 +127,8 @@ const FamilyGatheringSection = () => {
     return () => clearInterval(interval);
   }, [index]);
 
+
+
   if (windowWidth <= 730) {
     return (
       <section className="family-gathering">
@@ -191,12 +201,6 @@ const FamilyGatheringSection = () => {
                     className="main-picture"
                     alt=""
                   />
-                  {/* <div
-                    src={svgIcon}
-                    className="cream-line"
-                    // style={{ top: `${''}}%` }}
-                    alt=""
-                  ></div> */}
                 </div>
                 <div className="right-family-gathering">
                   <div className="inner-top">
@@ -234,14 +238,20 @@ const FamilyGatheringSection = () => {
           } else if (index == 2) {
             distance = 92;
           }
+          console.log(fullScreenData[index])
           return (
             <>
-              <div className="left-family-gathering" key={position}>
+              <div
+                className="left-family-gathering"
+                key={position}
+               
+              >
                 <img src={lines} className="lines" alt="" />
                 <img
                   src={fullScreenData[index].img}
                   className="main-picture"
                   alt=""
+                  ref={item.ref}
                 />
                 <img
                   src={svgIcon}

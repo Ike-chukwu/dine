@@ -17,7 +17,7 @@ const LocalFood = () => {
         setIsIntersecting(entry);
       },
       {
-        threshold: 0.8,
+        threshold: 0.6,
       }
     );
     observer.observe(sectionInView.current);
@@ -39,14 +39,14 @@ const LocalFood = () => {
       timeline
         .to(pic_1, {
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-          duration: 2.4,
+          duration: 1.6,
           ease: "power2.easeInOut",
         })
         .to(
           pic_2,
           {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-            duration: 2.4,
+            duration: 1.6,
             ease: "power2.easeInOut",
           },
           "<"
@@ -55,7 +55,7 @@ const LocalFood = () => {
           pic_3,
           {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-            duration: 2.4,
+            duration: 1.6,
             ease: "power2.easeInOut",
           },
           "<"
@@ -63,23 +63,23 @@ const LocalFood = () => {
         .to(lines, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(svg, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
         })
         .to(headingText, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(pText, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         });
     }
   }, [isIntersecting]);

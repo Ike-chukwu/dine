@@ -1,10 +1,13 @@
-import React from 'react'
-import './Loader.scss'
-
+import React from "react";
+import "./Loader.scss";
+import Lottie from "lottie-react";
+import loaderBar from "../../loaderBar.json";
 const Loader = () => {
   return (
-    <div className='loader'>Loader</div>
-  )
-}
+    <div className="loader">
+      <Lottie animationData={loaderBar} />
+    </div>
+  );
+};
 
-export default Loader
+export default Loader;

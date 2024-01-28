@@ -36,7 +36,7 @@
             width: 0;
             bottom: -40%;
             height: 3px;
-            background: #f7e172;
+            background: #ef4444;
             transition: width 0.5s ease-in-out;
           }
 
@@ -60,7 +60,7 @@
         cursor: pointer;
 
         &:hover {
-          color: #f7e172;
+          color: #ef4444;
           font-weight: bold;
         }
       }
@@ -73,14 +73,18 @@
           right: -100%;
           top: -100%;
           font-weight: 600;
-          background: white;
-          color: black;
+          color: white;
+          background: #ef4444;
           height: 25px;
           width: 25px;
           text-align: center;
           line-height: 25px;
           border-radius: 50%;
           font-size: 1.6rem;
+          font-family: "Quicksand", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: 400;
+          font-style: normal;
         }
       }
 
@@ -160,7 +164,7 @@
               &:hover {
                 cursor: pointer;
                 font-weight: bold;
-                background: #f7e172;
+                background: #ef4444;
               }
               // border-top: 0.1rem solid black;
               // border-bottom: 0.1rem solid black;
@@ -209,12 +213,13 @@
         top: -100%;
         left: 0;
         width: 100vw;
-        height: 100vh;
+        min-height: 100vh;
+        overflow-y: scroll;
         background: white;
         display: flex;
         align-items: center;
         z-index: 300;
-        gap: 4rem;
+        gap: 2.5rem;
         flex-direction: column;
         justify-content: center;
         transition: 1s ease-out;
@@ -228,7 +233,7 @@
           overflow: hidden;
           .nav-link {
             color: black;
-            font-size: 3rem;
+            font-size: 2rem;
             // font-weight: bold;
             cursor: pointer;
             transition: all 3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -288,6 +293,23 @@
                 transform: rotate(-45deg) translate3d(-4px, 0, 0);
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+/* Media query for landscape orientation */
+@media screen and (orientation: landscape) and (max-width: 653px) {
+  .nav-parent {
+    .nav {
+      .middle {
+        top: -200%;
+        gap: 1rem;
+        .nav-wrapper {
+          .nav-link {
+            color: black;
+            font-size: 1.6rem;
           }
         }
       }

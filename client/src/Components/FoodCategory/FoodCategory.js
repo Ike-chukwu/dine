@@ -76,14 +76,6 @@ const FoodCategory = () => {
           What category does the food <br /> you want fall under?
         </h1>
         <div className="btn-categories">
-          {/* <div
-            className="selected-category"
-            onClick={() => setFilterDropdown(!isFilterDropdown)}
-          >
-          <span className="real-cat-span">{currentCategory}</span>
-            
-            <i className="fas fa-caret-down"></i>
-          </div> */}
           {data.map((category) => {
             return (
               <div

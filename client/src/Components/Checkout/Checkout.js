@@ -5,11 +5,14 @@ import CheckoutInput from "./CheckoutInput/CheckoutInput";
 import { AuthContext } from "../../context";
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
+import { gsap } from "gsap";
+import Transition from "../Transition/Transition";
 
 const Checkout = () => {
   const { user, cartItems } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+  const checkoutTl = gsap.timeline();
   const [inputDetails, setInputDetails] = useState({
     firstName: "",
     lastName: "",
@@ -31,7 +34,7 @@ const Checkout = () => {
 
   const checkout = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     await fetch("https://gerith.onrender.com/checkout", {
       method: "POST",
       headers: {
@@ -45,12 +48,13 @@ const Checkout = () => {
       .then((response) => {
         if (response.url) {
           window.location.assign(response.url);
-          setLoading(false)
+          setLoading(false);
         }
-      }).catch((error) => {
-        setLoading(false)
-        setError(error.message)
       })
+      .catch((error) => {
+        setLoading(false);
+        setError(error.message);
+      });
   };
 
   const details = [
@@ -95,10 +99,12 @@ const Checkout = () => {
     },
   ];
 
-  if(loading) return <Loader/>
-  if(error) return <Error>Sorry! You've reached a dead end</Error>
+  
+  if (loading) return <Loader />;
+  if (error) return <Error>Sorry! You've reached a dead end</Error>;
   return (
     <section className="checkout-parent">
+      <Transition timeline={checkoutTl} />
       <h1 className="checkout-title">checkout</h1>
       <div className="checkout-form-parent">
         <form action="" className="checkout-form">
@@ -201,20 +207,6 @@ const Checkout = () => {
                   </div>
                 </div>
               ))}
-              {/* <div className="food-pack">
-                <img src={hills} alt="" />
-                <div className="food-details-in-checkout">
-                  <p className="food-name">fish</p>
-                  <span>price:</span>
-                </div>
-              </div>
-              <div className="food-pack">
-                <img src={hills} alt="" />
-                <div className="food-details-in-checkout">
-                  <p className="food-name">fish</p>
-                  <span>price:</span>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

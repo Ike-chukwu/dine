@@ -31,11 +31,11 @@ const ReservationBanner = () => {
       tl.to(tilteRef, {
         autoAlpha: 1,
         x: 0,
-        duration: 0.7,
+        duration: 0.4,
         ease: "power2",
       }).to(btnRef.current, {
         autoAlpha: 1,
-        duration: 1,
+        duration: 0.6,
         x: 0,
         ease: "power3",
       });

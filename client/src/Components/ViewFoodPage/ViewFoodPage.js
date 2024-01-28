@@ -226,69 +226,69 @@ const ViewFoodPage = () => {
         x: 0,
         autoAlpha: 1,
         ease: "power3",
-        duration: 0.5,
+        duration: 0.4,
         delay: 0,
       })
         .to(img, {
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           ease: "power3",
-          duration: 2,
+          duration: 1,
           ease: "power3.easeInOut",
         })
         .to(foodName, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
         })
         .to(foodPrice, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
-          stagger: 0.3,
+          stagger: 0.1,
         })
         .to(foodCategory, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
-          stagger: 0.3,
+          stagger: 0.1,
         })
         .to(foodArea, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
-          stagger: 0.3,
+          stagger: 0.1,
         })
         .to(foodIngredients, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
-          stagger: 0.3,
+          stagger: 0.1,
         })
         .to(foodRating, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
-          stagger: 0.3,
+          stagger: 0.1,
         })
         .to(firstSetOfBtns, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
-          stagger: 0.3,
+          stagger: 0.1,
         })
         .to(secondBtn, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
-          stagger: 0.3,
+          stagger: 0.1,
         })
     }
   }, [isIntersecting]);

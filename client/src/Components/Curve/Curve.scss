@@ -8,11 +8,9 @@
   }
 }
 
-
-
 @media (max-width: 1050px) {
   .parent-curve {
-    padding-block: 22rem;
+    display: none;
     .curve-img,
     .lines {
       display: none;

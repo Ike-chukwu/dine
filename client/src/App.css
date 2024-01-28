@@ -20,8 +20,34 @@ section {
     padding-block: 8rem;
 }
 
-.App{
+.App {
     visibility: hidden;
+}
+
+.mainApp {
+    visibility: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Bubblegum Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p,
+a,
+li,
+span,
+button {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 @media(max-width:1490px) {

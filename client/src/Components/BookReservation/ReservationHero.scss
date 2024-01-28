@@ -1,15 +1,15 @@
 .reservation-parent {
   background: url(../../assets/images/homepage/ready-bg-desktop.jpg) no-repeat;
-  height: 60vh;
   background-size: cover;
   background-position: center;
   .confirm-reservation {
     background: rgba(18, 18, 18, 0.36);
+    backdrop-filter: blur(4px);
     position: fixed;
     left: 0;
     top: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    min-height: 100vh;
     z-index: 5000;
     display: flex;
     justify-content: center;
@@ -17,7 +17,7 @@
     flex-direction: column;
     color: white;
     gap: 3rem;
-    .reserve-title{
+    .reserve-title {
       font-size: 1.8rem;
       text-align: center;
     }

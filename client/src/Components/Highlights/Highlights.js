@@ -71,7 +71,7 @@ const Highlights = () => {
         {
           autoAlpha: 1,
           x: -0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
         },
         "-=0.2"
@@ -79,123 +79,123 @@ const Highlights = () => {
         .to(headingTxt, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(pText, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(rightContainerParentRef_1, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(foodBoxLeftSectionfirstImg, {
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           ease: "power3.easeInOut",
-          duration: 1.4,
-          scale:1
+          duration: 0.8,
+          scale: 1,
         })
         .to(
           foodBoxLeftSectionSecondImg,
           {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
             ease: "power3.easeInOut",
-            duration: 1.4,
-            scale:1
+            duration: 0.8,
+            scale: 1,
           },
           "<"
         )
         .to(foodBoxLeftSectionThirdImg, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
         })
         .to(foodBoxRightSectionHTxt, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(foodBoxRightSectionPTxt, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(rightContainerParentRef_2, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(secondFoodBoxLeftSectionfirstImg, {
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           ease: "power3.easeInOut",
-          duration: 1.4,
-          scale:1
+          duration: 0.8,
+          scale: 1,
         })
         .to(
           secondFoodBoxLeftSectionSecondImg,
           {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
             ease: "power3.easeInOut",
-            duration: 1.4,
-            scale:1
+            duration: 0.8,
+            scale: 1,
           },
           "<"
         )
         .to(secondFoodBoxLeftSectionThirdImg, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
         })
         .to(secondFoodBoxRightSectionHTxt, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(secondFoodBoxRightSectionPTxt, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(rightContainerParentRef_3, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(thirdFoodBoxLeftSectionfirstImg, {
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           ease: "power3.easeInOut",
-          duration: 1.4,
-          scale:1
+          duration: 0.8,
+          scale: 1,
         })
         .to(
           thirdFoodBoxLeftSectionSecondImg,
           {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
             ease: "power3.easeInOut",
-            duration: 1.4,
-            scale:1
+            duration: 0.8,
+            scale: 1,
           },
           "<"
         )
         .to(thirdFoodBoxLeftSectionThirdImg, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
           ease: "power2",
         })
         .to(thirdFoodBoxRightSectionHTxt, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(thirdFoodBoxRightSectionPTxt, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         });
     }
   }, [isIntersecting]);

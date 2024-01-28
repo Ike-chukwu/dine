@@ -40,7 +40,7 @@ const EnjoyableSection = () => {
           pic_1,
           {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-            duration: 2.4,
+            duration: 1.6,
             ease: "power2.easeInOut",
           },
           "<"
@@ -49,7 +49,7 @@ const EnjoyableSection = () => {
           pic_2,
           {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-            duration: 2.4,
+            duration: 1.6,
             ease: "power2.easeInOut",
           },
           "<"
@@ -58,7 +58,7 @@ const EnjoyableSection = () => {
           pic_3,
           {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-            duration: 2.4,
+            duration: 1.6,
             ease: "power2.easeInOut",
           },
           "<"
@@ -67,7 +67,7 @@ const EnjoyableSection = () => {
           pic_4,
           {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-            duration: 2.4,
+            duration: 1.6,
             ease: "power2.easeInOut",
           },
           "<"
@@ -77,7 +77,7 @@ const EnjoyableSection = () => {
           {
             autoAlpha: 1,
             x: 0,
-            duration: 0.7,
+            duration: 0.4,
             ease: "power2",
           },
           "-=0.2"
@@ -85,12 +85,12 @@ const EnjoyableSection = () => {
         .to(tilte, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         })
         .to(pText, {
           autoAlpha: 1,
           x: 0,
-          duration: 0.7,
+          duration: 0.4,
         });
     }
   }, [isIntersecting]);
