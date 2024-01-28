@@ -19,73 +19,58 @@ const Preloader = () => {
     tl.to(logo, {
       delay: 0.7,
       autoAlpha: 0,
-      duration: 0.4,
+      duration: 0.3,
       ease: "power2.easeIn",
     })
       .to(firstText, {
         autoAlpha: 1,
-        duration: 0.4,
+        duration: 0.3,
         ease: "power2.easeIn",
       })
       .to(firstText, {
-        autoAlpha: 0,
-        duration: 0.4,
-        ease: "power2.easeIn",
-      })
-      .set(firstText, {
         display: "none",
+        duration: 0,
+        ease: "power2.easeIn",
       })
       .to(secodText, {
         autoAlpha: 1,
-        duration: 0.4,
+        duration: 0.3,
         ease: "power2.easeIn",
       })
       .to(secodText, {
-        autoAlpha: 0,
-        duration: 0.4,
-        ease: "power2.easeIn",
-      })
-      .set(secodText, {
         display: "none",
+        duration: 0,
+        ease: "power2.easeIn",
       })
       .to(thirdText, {
         autoAlpha: 1,
-        duration: 0.4,
+        duration: 0.3,
         ease: "power2.easeIn",
       })
       .to(thirdText, {
-        autoAlpha: 0,
-        duration: 0.4,
-        ease: "power2.easeIn",
-      })
-      .set(thirdText, {
         display: "none",
+        duration: 0,
+        ease: "power2.easeIn",
       })
       .to(fourthText, {
         autoAlpha: 1,
-        duration: 0.4,
+        duration: 0.3,
         ease: "power2.easeIn",
       })
       .to(fourthText, {
-        autoAlpha: 0,
-        duration: 0.4,
-        ease: "power2.easeIn",
-      })
-      .set(fourthText, {
         display: "none",
+        duration: 0,
+        ease: "power2.easeIn",
       })
       .to(preloaderContiner.current, {
         delay: 0.2,
         height: 0,
-        duration: 0.7,
+        duration: 0.5,
         ease: "power2.easeInOut",
-      })
-      .set(preloaderContiner.current, {
-        display: "none",
       });
     const timeOut = setTimeout(() => {
       setPreloader(false);
-    }, 4600);
+    }, 3000);
 
     return () => clearTimeout(timeOut);
   });
